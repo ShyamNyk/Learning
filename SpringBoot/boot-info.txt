@@ -1,0 +1,10 @@
+netstat -ano | findStr "8080"
+taskkill /F /PID 22232
+https://www.youtube.com/watch?v=DCZOchCX10s
+https://github.com/varuncbv/SpringBootRestAPIHibernateJPAMYSQLTutorial/blob/master/springbootrestapiexample/src/main/resources/application.properties
+https://www.youtube.com/watch?v=7NDohpda7YU
+Server = maria3008-in-ba-in.icloud.intel.com; Port = 3306; Database = Test; Uid = Test_ro; Password = 66eG214Kc4p2eSp
+Server = maria3008-in-ba-in.icloud.intel.com; Port = 3306; Database = Test; Uid = Test_so; Password = h7oQkQxFfZgH1Ob
+
+https://techblogstation.com/spring-boot/spring-boot-mysql-hibernate/
+https://www.callicoder.com/spring-boot-rest-api-tutorial-with-mysql-jpa-hibernate/

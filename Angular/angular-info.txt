@@ -1,0 +1,49 @@
+npm config ls -l
+npm config list
+npm config set https-proxy http://proxy-chain.intel.com:912 -g  (It is dash(-) not underscore)
+npm config set proxy http://proxy-chain.intel.com:911 -g  (only this is required) 10.223.4.20
+npm config set registry https://pixi.intel.com/ -g
+npm config set strict-ssl false
+npm config delete registry -g
+https://registry.npmjs.org 
+
+npm install -g @angular/cli
+npm install -g @angular/cli@6.1.0 
+npm uninstall -g @angular/cli
+npm install -g typescript@2.7.2
+npm install typescript@2.8.0
+npm cache clean --force
+rmdir /s C:\Users\ssundarn\AppData\Roaming\npm-cache
+Find a file: dir abc.txt /s
+Check Versions: node -v, mpm -v, tsc -v, ng v
+
+
+Create new Project : ng new myProject
+ng new myProject --skip-install=true   , cd myProject  ,npm install
+ng g c new-component --module app
+ng serve --host 0.0.0.0 --port 4206
+
+Type script common error:
+https://stackoverflow.com/questions/54434333/error-ts1005-expected-typescript-angular-6-for-first-build-error-rxjs-insi
+mainly issue with  "rxjs": "^6.0.0", remove ^, make it  "rxjs": "6.0.0"
+
+Angular in tomcat: https://www.youtube.com/watch?v=Fda_EJYra-c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Proxy server acts as a middle-man(gateway) between server(internet) and client serving computers(you).we use proxy server for various purpose like sharing internet connections on a local area network, hide our IP address, implement internet access control, access blocked websites and so on. If you’re using a proxy server, internet traffic flows through the proxy server on its way to the address you requested. The request then comes back through that same proxy server (there are exceptions to this rule), and then the proxy server forwards the data received from the website to you.If that’s all it does, why bother with a proxy server? 
+Why not just go straight from to the website and back?
+Modern proxy servers do much more than forwarding web requests, all in the name of data security and network performance. Proxy servers act as a firewall and web filter, provide shared network connections, and cache data to speed up common requests. A good proxy server keeps users and the internal network protected from the bad stuff that lives out in the wild internet. Lastly, proxy servers can provide a high level of privacy.

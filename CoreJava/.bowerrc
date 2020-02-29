@@ -1,0 +1,11 @@
+{
+  "directory": "app/bower_components",
+  "registry": {
+    "search": [
+      "http://bowerregistry.intel.com",
+      "https://bower.herokuapp.com"
+    ]
+  },
+  "proxy": "http://proxy-chain.intel.com:911",
+  "https-proxy": "http://proxy-chain.intel.com:911"
+}
