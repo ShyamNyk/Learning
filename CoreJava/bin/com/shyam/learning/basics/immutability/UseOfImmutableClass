@@ -1,0 +1,13 @@
+#Use of Immutable class
+1) immutable objects can safely be shared among multiple threads as they are threadsafe by default
+There are various reason for immutability:
+
+1)Thread Safety: Immutable objects cannot be changed nor can its internal state change, 
+thus there's no need to synchronise it.
+2)It also guarantees that whatever I send through (through a network) has to come in the same state 
+as previously sent. It means that nobody (eavesdropper) can come and add random data in my immutable set.
+3)It's also simpler to develop. You guarantee that no subclasses will exist if an object is immutable. 
+E.g. a String class.
+
+So, if you want to send data through a network service, and you want a sense of guarantee that 
+you will have your result exactly the same as what you sent, set it as immutable.

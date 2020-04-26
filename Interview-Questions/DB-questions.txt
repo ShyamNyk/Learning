@@ -1,0 +1,31 @@
+1)What is indexing in DB and how does it affect ?
+https://stackoverflow.com/questions/1108/how-does-database-indexing-work
+https://www.geeksforgeeks.org/indexing-in-databases-set-1/
+
+2) What is the difference between where and having cluase?
+
+3) What is the difference between delete and truncate ?
+
+4) What is the difference between Primary key and unique key,  Primary key and foreign key ?
+
+5)what is the difference between procedure and function ?
+
+6) What is veiw ?
+
+7) Can we create index on view ?
+
+8) What is a cursor and what is it's alternative ?
+
+9) How to find the 10nth largest salary in a table ?
+Nth larget salary : SELECT Salary FROM EmployeePosition E1 WHERE N-1 = ( SELECT COUNT( DISTINCT ( E2.Salary ) ) FROM EmployeePosition E2 WHERE E2.Salary >  E1.Salary );
+Two maximum salaries: SELECT DISTINCT Salary FROM EmployeePosition E1 WHERE 2 >= (SELECTCOUNT(DISTINCT Salary) FROM EmployeePosition E2 WHERE E1.Salary <= E2.Salary) ORDER BY E1.Salary DESC;
+Two minimum salaries: SELECT DISTINCT Salary FROM EmployeePosition E1 WHERE 2 >= (SELECTCOUNT(DISTINCT Salary) FROM EmployeePosition E2 WHERE E1.Salary >= E2.Salary) ORDER BY E1.Salary DESC;
+
+10) Find duplicate elements in a table
+SELECT EmpID, EmpFname, Department, COUNT(*) 
+FROM EmployeeInfo GROUP BY EmpID, EmpFname, Department 
+having COUNT(*) > 1;
+
+11)
+
+

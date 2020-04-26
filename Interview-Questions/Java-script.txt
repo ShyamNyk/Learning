@@ -1,0 +1,8 @@
+1)What is the difference between innerHTML & innerText?
+2)What is an event bubbling in JavaScript?
+
+
+
+https://www.edureka.co/blog/interview-questions/javascript-interview-questions/
+https://hackr.io/blog/javascript-interview-questions
+https://www.geeksforgeeks.org/commonly-asked-javascript-interview-questions-set-1/

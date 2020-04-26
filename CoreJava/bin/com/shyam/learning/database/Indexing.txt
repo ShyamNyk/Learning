@@ -1,0 +1,73 @@
+Q)What is indexing in DB and how does it affect ?
+=======================================================
+
+https://stackoverflow.com/questions/1108/how-does-database-indexing-work
+https://www.javatpoint.com/indexing-in-dbms
+https://www.guru99.com/indexing-in-database.html
+https://www.youtube.com/watch?v=E--yzX05_k8
+https://www.youtube.com/watch?v=SxHX1T53n_A
+https://www.youtube.com/watch?v=O-Mbn6VI1zc
+https://www.tutorialcup.com/interview/sql-interview-questions/indexes-sql.htm
+
+INDEXING is a data structure technique which allows you to quickly retrieve records from a database file. 
+An Index is a small table having only two columns. The first column comprises a copy of the primary or candidate key
+of a table. Its second column contains a set of pointers for holding the address of the disk block where that 
+specific key value stored.
+
+The biggest benefit of Indexing is that it helps you to reduce the total number of I/O operations needed 
+to retrieve that data.
+The biggest drawback to performing the indexing database management system, you need a primary key on the 
+table with a unique value. Here insert and update will be slow as you need to insert/update in two tables
+
+
+Q)What kind of data structure is an index?
+=======================================================
+This structure is usually a B-tree or a hash table but it can be any other logic structure.
+n most of the cases, B-Tree data structure is used to store the indexes. This is because of the time efficiency of B-Trees. In other words, B-trees are traversed, searched, inserted, deleted and updated in logarithmic time. In addition, B-Tree data are always sorted and stored. Hence it makes searching and inserting the data in known fraction of time.
+
+
+Q) Types of Indexing
+=======================================================
+Primary:  Dense & Sparse , file is always sorted here
+Secondary , also called non-clustered index , main file is un-sorted, can be done using key or non-key attributes
+Clustered,  using a non-key attribute, file is always sorted
+
+Multi Level Indexing
+
+
+Q) Command to create index
+=======================================================
+Example: We have a database table called User with three columns – Name, Age and Address.
+CREATE INDEX name_index ON User (Name)
+multi-column index: CREATE INDEX name_index ON User (Name,Age)
+CREATE NONCLUSTERED INDEX IX_tblStudent_Name  ON student(name ASC)
+CREATE CLUSTERED INDEX IX_tblStudent_Gender_Score ON student(gender ASC, total_score DESC)ON student(name ASC)
+DROP INDEX <index name>;
+
+Q)What is the difference between clustered and non clustered index in SQL?
+=======================================================
+There can be only one clustered index per table. However, you can create multiple non-clustered indexes on a single table.
+Clustered indexes only sort tables. Therefore, they do not consume extra storage. Non-clustered indexes are stored in a separate place from the actual table claiming more storage space.
+Clustered indexes are faster than non-clustered indexes since they don’t involve any extra lookup step.
+
+Q) Can we create index on view ?
+=======================================================
+Yes, that would be called an Indexed view or Materialized view.
+
+Creating a unique clustered index on a view improves query performance because the view is stored in the database in the same way a table with a clustered index is stored.
+
+The big disadvantage of indexed views is that they are recreated every time the underlying table data changes. That restricts the use of indexed views to data that does not change often, typically in a data warehouse or business intelligence environment.
+
+Q) What is normalization ?
+=======================================================
+https://www.youtube.com/watch?v=ABwD8IYByfk
+NORMALIZATION is a database design technique that organizes tables in a manner that reduces redundancy and dependency of data. Normalization divides larger tables into smaller tables and links them using relationships. The purpose of Normalization is to eliminate redundant (useless) data and ensure data is stored logically.
+
+Q) Different types of Normalization ?
+=======================================================
+1NF Rules
+2NF Rules
+3NF Rules
+BCNF (Boyce-Codd Normal Form)
+
+Q)

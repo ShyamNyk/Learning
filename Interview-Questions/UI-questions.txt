@@ -1,0 +1,28 @@
+Angular:
+1) Difference between angular component and angular directive ?
+Components are the fundamental building blocks of Angular applications. They display data on the screen, listen for user input, and take action based on that input.
+Components define views, which are sets of screen elements that Angular can choose among and modify according to your program logic and data.
+
+Directives are js class and declared as @directive. There are 3 directives in Angular.
+
+Component Directives
+Structural Directives
+Attribute Directives
+Component Directives: Component directives are used in main class. They contain the detail of how the component should be processed, instantiated and used at runtime.
+
+Structural Directives: Structural directives start with a * sign. These directives are used to manipulate and change the structure of the DOM elements. For example, *ngIf and *ngFor.
+
+Attribute Directives: Attribute directives are used to change the look and behavior of the DOM elements. For example: ngClass, ngStyle etc.
+
+2) What is the lifecycle of a component
+
+https://github.com/sudheerj/angular-interview-questions#what-is-the-difference-between-angularjs-and-angular
+
+3) Different types of binding
+
+4)user experience and accessibility
+
+5)coercion & hositing
+
+6) When to user for loop instead of foreach
+

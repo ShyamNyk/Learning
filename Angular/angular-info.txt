@@ -7,27 +7,39 @@ npm config set strict-ssl false
 npm config delete registry -g
 https://registry.npmjs.org 
 
+Create a project: ng new project-name
+run the server: ng s -o
+
 npm install -g @angular/cli
-npm install -g @angular/cli@6.1.0 
+npm install -g @angular/cli@6.1.5
+npm install -g @angular/cli@7
 npm uninstall -g @angular/cli
 npm install -g typescript@2.7.2
 npm install typescript@2.8.0
+npm install --save bootstrap@4.1.3
 npm cache clean --force
 rmdir /s C:\Users\ssundarn\AppData\Roaming\npm-cache
 Find a file: dir abc.txt /s
 Check Versions: node -v, mpm -v, tsc -v, ng v
+npm i @types/datatables.net --save-dev  : solves data tale issues
 
 
 Create new Project : ng new myProject
 ng new myProject --skip-install=true   , cd myProject  ,npm install
 ng g c new-component --module app
+ng g c new-component --skip-import  // Don't mention the module name
 ng serve --host 0.0.0.0 --port 4206
+
+ng generate cl hardPhone // Create a class
 
 Type script common error:
 https://stackoverflow.com/questions/54434333/error-ts1005-expected-typescript-angular-6-for-first-build-error-rxjs-insi
 mainly issue with  "rxjs": "^6.0.0", remove ^, make it  "rxjs": "6.0.0"
 
 Angular in tomcat: https://www.youtube.com/watch?v=Fda_EJYra-c
+
+Logging in Angular:
+npm install --save ngx-logger
 
 
 

@@ -1,0 +1,4 @@
+Questions related to circular dependency
+1) Circular dependency
+2) How many instances of controller and services are created per each request in spring 
+3) Difference between path variable and request param ?
