@@ -1,0 +1,24 @@
+1) What is instance variable in Java?
+A variable which is created inside the class but outside the method is known as an instance variable. Instance variable doesn't get memory at compile time. It gets memory at runtime when an object or instance is created. That is why it is known as an instance variable.
+
+2)What are the different ways to create an object in Java?
+There are many ways to create an object in java. They are:
+
+By new keyword
+By newInstance() method
+By clone() method
+By deserialization
+By factory method etc.
+
+3)Can we access non static variables inside static method ?
+No, it can't be accessed direclty.
+However, we can access it by using the object of the class.
+
+4)What is the purpose of a default constructor?
+The default constructor is used to provide the default values to the object like 0, null, etc., depending on the type.
+
+5)What is generics in Java ?
+The Java Generics programming is introduced in J2SE 5 to deal with type-safe objects. It makes the code stable by detecting the bugs at compile time.
+Before generics, we can store any type of objects in the collection, i.e., non-generic. Now generics force the java programmer to store a specific type of objects.
+
+6) What is the difference between Strong and Weak reference in java ?

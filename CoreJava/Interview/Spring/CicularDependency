@@ -1,0 +1,68 @@
+The Spring reference manual explains how circular dependencies are resolved. 
+The beans are instantiated first, then injected into each other.
+
+package mypackage;
+
+public class A {
+
+    public A() {
+        System.out.println("Creating instance of A");
+    }
+
+    private B b;
+
+    public void setB(B b) {
+        System.out.println("Setting property b of A instance");
+        this.b = b;
+    }
+
+}
+
+package mypackage;
+
+public class B {
+
+    public B() {
+        System.out.println("Creating instance of B");
+    }
+
+    private A a;
+
+    public void setA(A a) {
+        System.out.println("Setting property a of B instance");
+        this.a = a;
+    }
+
+}
+
+<bean id="a" class="mypackage.A">
+    <property name="b" ref="b" />
+</bean>
+
+<bean id="b" class="mypackage.B">
+    <property name="a" ref="a" />
+</bean>
+
+You would see the following output when creating a context using this configuration:
+
+Creating instance of A
+Creating instance of B
+Setting property a of B instance
+Setting property b of A instance
+
+The Spring container is able to resolve Setter-based circular dependencies 
+but gives a runtime exception BeanCurrentlyInCreationException in case of Constructor-based 
+circular dependencies. In case of Setter-based circular dependency, the IOC container handles 
+it differently from a typical scenario wherein it would fully configure the collaborating bean 
+before injecting it
+
+Solutions:
+
+Use @Lazy Annotation
+Redesign you class dependency
+Use Setter/Field Injection
+Use @PostConstruct Annotation
+
+If two beans are dependent on each other then we should not use Constructor injection 
+in both the bean definitions. Instead we have to use setter injection in any one of the beans. 
+(of course we can use setter injection n both the bean definitions, but constructor injections in both throw 'BeanCurrentlyInCreationException'

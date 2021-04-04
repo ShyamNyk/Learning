@@ -1,0 +1,30 @@
+1)Eager initialization is easy to implement but it may cause resource and CPU time wastage. 
+Use it only if cost of initializing a class is less in terms of resources or your program will always need the instance of class.
+2)By using Static block in Eager initialization we can provide exception handling and also can control over instance.
+3)Using synchronized we can create singleton class in multi-threading environment also but it can cause slow performance, so we can use Double check locking mechanism.
+4)Bill Pugh implementation is most widely used approach for singleton classes. Most developers prefer it because of its simplicity and advantages.
+
+-- Q) What is the difference between Static class and single tone class ?
+- Singleton class provides an object(only one instance) during the application lifeCycle such as java.lang.Runtime
+  While Static class only provide static methods such as java.lang.Math
+- Static methods in Java cannot be overridden, but methods defined in Singleton 
+  class can be overridden by extending it.
+- Singleton Class is capable of Inheritance and Polymorphism to extend a base class, 
+- implement an interface and capable of providing different implementations. whereas static not
+
+For eg: java.lang.Runtime,is a Singleton Class in Java, call to getRuntime() method 
+returns the runtime object associated with the current Java application but ensures 
+only one instance per JVM
+
+-- Q) When to use What
+When I want class with full functionality, e.g. there are many methods and variables, I use singleton;
+If I want class with only one or two methods in it, e.g. MailService class, which has only 1 method SendMail() I use static class and method.
+
+-- Q) Exmples of SingleTone class
+java.lang.Runtime#getRuntime()
+java.awt.Desktop#getDesktop()
+Runtime run = Runtime.getRuntime(); 
+System.out.println("" + run.freeMemory()); Runtime.getRuntime().totalMemory(,
+// Runtime.getRuntime().exec("google-chrome")
+
+-- Q)

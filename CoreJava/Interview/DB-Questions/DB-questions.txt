@@ -1,0 +1,264 @@
+Q) What is the difference between delete and truncate ?
+=======================================================
+
+Truncate is faster than delete
+----------------------------------------+----------------------------------------------+
+|                Truncate                |                    Delete                    |
++----------------------------------------+----------------------------------------------+
+| We can't Rollback after performing     | We can Rollback after delete.                |
+| Truncate.                              |                                              |
+|                                        |                                              |
+| Example:                               | Example:                                     |
+| BEGIN TRAN                             | BEGIN TRAN                                   |
+| TRUNCATE TABLE tranTest                | DELETE FROM tranTest                         |
+| SELECT * FROM tranTest                 | SELECT * FROM tranTest                       |
+| ROLLBACK                               | ROLLBACK                                     |
+| SELECT * FROM tranTest                 | SELECT * FROM tranTest                       |
++----------------------------------------+----------------------------------------------+
+| Truncate reset identity of table.      | Delete does not reset identity of table.     |
++----------------------------------------+----------------------------------------------+
+| It locks the entire table.             | It locks the table row.                      |
++----------------------------------------+----------------------------------------------+
+| Its DDL(Data Definition Language)      | Its DML(Data Manipulation Language)          |
+| command.                               | command.                                     |
++----------------------------------------+----------------------------------------------+
+| We can't use WHERE clause with it.     | We can use WHERE to filter data to delete.   |
++----------------------------------------+----------------------------------------------+
+| Trigger is not fired while truncate.   | Trigger is fired.                            |
++----------------------------------------+----------------------------------------------+
+| Syntax :                               | Syntax :                                     |
+| 1) TRUNCATE TABLE table_name           | 1) DELETE FROM table_name                    |
+|                                        | 2) DELETE FROM table_name WHERE              |
+|                                        |    example_column_id IN (1,2,3)              |
++----------------------------------------+----------------------------------------------+
+
+Q)What is the difference between DROP and TRUNCATE commands?
+=======================================================
+DROP command removes a table and it cannot be rolled back from the database whereas TRUNCATE command removes all the rows from the table.
+
+Q) What is the difference between where and having clause ?
+=======================================================
+1-HAVING clause can be used only with SELECT statement. Where can be used in select, insert, update...
+HAVING is usually used in a GROUP BY clause and whenever GROUP BY is not used, HAVING behaves like a WHERE clause.
+2-HAVING: is used to check conditions after the aggregation takes place.
+select City, CNT=Count(1) From Address Where State = 'MA' Group By City
+WHERE: is used to check conditions before the aggregation takes place.
+select City, CNT=Count(1) From Address Where State = 'MA' Group By City Having Count(1)>5
+3-The where clause works on row’s data, not on aggregated data
+Note:  It is not a predefined rule but  in a good number of the SQL queries, we use WHERE prior to GROUP BY and HAVING after GROUP BY. The Where clause acts as a pre filter where as Having as a post filter.
+
+Q) What is foreign key ?
+=======================================================
+Foreign key maintains referential integrity by enforcing a link between the data in two tables.
+The foreign key in the child table references the primary key in the parent table.
+The foreign key constraint prevents actions that would destroy links between the child and parent tables.
+
+Q) Different types of keys
+=======================================================
+
+CANDIDATE KEY: is a set of one or more fields/columns that can identify a record uniquely in a table. There can be multiple Candidate Keys in one table. Each Candidate Key can work as Primary Key. We can say Candidate Key is a super key with no repeated attributes. The Primary key should be selected from the candidate keys. Every table must have at least a single candidate key. A table can have multiple candidate keys but only a single primary key.
+Example: In above diagram ID, RollNo and EnrollNo are Candidate Keys since all these three fields can be work as Primary Key.
+
+PRIMARY KEY: is a column or group of columns in a table that uniquely identify every row in that table. A table cannot have more than one primary key. It can't be null. The value in a primary key column can never be modified or updated if any foreign key refers to that primary key.
+
+ALTERNATE KEY:  is a column or group of columns in a table that uniquely identify every row in that table. A table can have multiple choices for a primary key but only one can be set as the primary key. All the keys which are not primary key are called an Alternate Key.In this table, StudID, Roll No, Email are qualified to become a primary key. But since StudID is the primary key, Roll No, Email becomes the alternative key.
+
+FOREIGN KEY is a column that creates a relationship between two tables. The purpose of Foreign keys is to maintain data integrity and allow navigation between two different instances of an entity. It acts as a cross-reference between two tables as it references the primary key of another table.
+
+COMPOUND KEY has two or more attributes that allow you to uniquely recognize a specific record. It is possible that each column may not be unique by itself within the database. However, when combined with the other column or columns the combination of composite keys become unique. The purpose of compound key is to uniquely identify each record in the table.
+
+COMPOSITE KEY is a combination of two or more columns that uniquely identify rows in a table. The combination of columns guarantees uniqueness, though individually uniqueness is not guaranteed. Hence, they are combined to uniquely identify records in a table.
+
+The difference between compound and the composite key is that any part of the compound key can be a foreign key, but the composite key may or maybe not a part of the foreign key.
+
+SURROGATE KYE is an artificial key which aims to uniquely identify each record is called a surrogate key. These kind of key are unique because they are created when you don't have any natural primary key. They do not lend any meaning to the data in the table. Surrogate key is usually an integer.
+
+
+Q) What is the difference between Primary key and foreign key ?
+===============================================================
+
+			PRIMARY KEY														FOREIGN KYE
+-Helps you to uniquely identify a record in the table.	-It is a field in the table that is the primary key of 															another table.
+-Primary Key never accept null values.					-A foreign key may accept multiple null values.
+-Single Primary Key in the table						-It can be multiple
+-Primary key is a clustered index and data				-A foreign key cannot automatically create an index						in the DBMS table are physically organized				 However, you can manually create an index on the foreign key. 
+in the sequence of the clustered index.	. 
+
+Q) What is the difference between Primary key and unique key ?
+==============================================================
+-PRIMARY KEY:
+There can only be one primary key in a table
+In some DBMS it cannot be NULL - e.g. MySQL adds NOT NULL
+Primary Key is a unique key identifier of the record
+
+-UNIQUE KEY:
+Can be more than one unique key in one table
+Unique key can have NULL values
+It can be a candidate key
+Unique key can be NULL ; multiple rows can have NULL values and therefore may not be considered "unique"
+
+
+Q) What is the difference between procedure and function ?
+					FUNCTION 															PROCEDURE
+-Function is used to calculate result using given inputs.			Procedure is used to perform certain task in order.
+-Function can be called by a procedure								Procedure cannot be called by a function
+-DML statments cannot be executed within a function					DML statements can be executed within a procedure
+-Function can be called within a query.								It can't be
+-Whenever a function is called, it is first compiled 				A procedure is compiled once and can be called multiple
+ before being called.												times without being compiled.
+-A function returns a value											No return of any value
+-A function has no support for try-catch							A procedure has support for try-catch blocks.
+-A select statement can have a function call.						A select statemnt can't have a procedure call.
+-A function can not have explicit transaction handling.				A procedure can use explicit transaction handling.
+
+Q) What is veiw ?
+=======================
+
+In simple word, a view is a query that’s stored on a database.
+Advantage:
+- SIMPLYCITY: It create simplycity. We can create view for complicated quireis that run frequently. 
+- SECURITY: It hides the columns that are not required. Hiding the underlying table strcture
+CREATE VIEW NewCustomers AS
+
+Q) What is a cursor and what is it's alternative ?
+
+Cursor is a Temporary Memory or Temporary Work Station. It is Allocated by Database Server at the Time of Performing DML operations on Table by User. Cursors are used to store Database Tables. There are 2 types of Cursors: Implicit Cursors, and Explicit Cursors. These are explained as following below.
+
+Implicit Cursors:Implicit Cursors are also known as Default Cursors of SQL SERVER. These Cursors are allocated by SQL SERVER when the user performs DML operations.
+Explicit Cursors :Explicit Cursors are Created by Users whenever the user requires them. Explicit Cursors are used for Fetching data from Table in Row-By-Row Manner.
+
+   
+Q) What are transactions and their controls?
+=======================================================
+Answer: A transaction can be defined as the sequence task that is performed on databases in a logical manner to gain certain results. Operations like Creating, updating, deleting records performed in the database come from transactions.
+In simple words, we can say that a transaction means a group of SQL queries executed on database records.
+There are 4 transaction controls such as
+COMMIT: It is used to save all changes made through the transaction.
+ROLLBACK: It is used to roll back the transaction. All changes made by the transaction are reverted back and the database remains as before.
+SET TRANSACTION: Set the name of the transaction.
+SAVEPOINT: It is used to set the point where the transaction is to be rolled back.
+
+Q) What are the properties of the transaction?
+=======================================================
+Answer: Properties of the transaction are known as ACID properties. These are:
+Atomicity: Ensures the completeness of all transactions performed. Checks whether every transaction is completed successfully or not. If not, then the transaction is aborted at the failure point and the previous transaction is rolled back to its initial state as changes are undone.
+Consistency: Ensures that all changes made through successful transactions are reflected properly on the database.
+Isolation: Ensures that all transactions are performed independently and changes made by one transaction are not reflected on others.
+Durability: Ensures that the changes made in the database with committed transactions persist as it is even after a system failure.
+
+Q) How many Aggregate functions are available in SQL?
+=======================================================
+Answer: SQL Aggregate functions determine and calculate values from multiple columns in a table and return a single value.
+There are 7 aggregate functions in SQL:
+AVG(): Returns the average value from specified columns.
+COUNT(): Returns number of table rows.
+MAX(): Returns the largest value among the records.
+MIN(): Returns smallest value among the records.
+SUM(): Returns the sum of specified column values.
+FIRST(): Returns the first value.
+LAST(): Returns last value.
+
+Q) What are Scalar functions in SQL?
+=======================================================
+Answer: Scalar functions are used to return a single value based on the input values.
+Scalar Functions are as follows:
+UCASE(): Converts the specified field in the upper case.
+LCASE(): Converts the specified field in lower case.
+MID(): Extracts and returns character from the text field.
+FORMAT(): Specifies the display format.
+LEN(): Specifies the length of the text field.
+ROUND(): Rounds up the decimal field value to a number.
+
+Q)Referential integrity:
+Referential Integrity is set of constraints applied to foreign key which prevents 
+entering a row in child table (where you have foreign key) for which you don't have 
+any corresponding row in parent table i.e. entering NULL or invalid foreign keys. 
+Referential Integrity prevents your table from having  incorrect or incomplete 
+relationship e.g. If you have two tables Order and Customer where Customer is 
+parent table with primary key customer_id and Order is child table with foreign 
+key customer_id. Since as per business rules you can not have an Order without a 
+Customer and this business rule can be implemented using referential integrity in 
+SQL on relational database
+
+Q)A referential integrity constraint is specified between two tables.
+In the Referential integrity constraints, 
+if a foreign key in Table 1 refers to the Primary Key of Table 2, 
+then every value of the Foreign Key in Table 1 must be null or be available in Table 2.
+
+Q) What is Delete cascade ?
+DELETE CASCADE: When we create a foreign key using this option, it deletes the referencing rows in the child table when the referenced row is deleted in the parent table which has a primary key.
+CREATE TABLE child_table
+(
+  column1 datatype [ NULL | NOT NULL ],
+  column2 datatype [ NULL | NOT NULL ],
+  ...
+
+  CONSTRAINT fk_name
+    FOREIGN KEY (child_col1, child_col2, ... child_col_n)
+    REFERENCES parent_table (parent_col1, parent_col2, ... parent_col_n)
+    ON DELETE CASCADE
+    [ ON UPDATE { NO ACTION | CASCADE | SET NULL | SET DEFAULT } ] 
+);
+UPDATE CASCADE: When we create a foreign key using UPDATE CASCADE the referencing rows are updated in the child table when the referenced row is updated in the parent table which has a primary key.
+
+Q) What is SQL Injection ?
+SQL injection is one of the most common web hacking techniques
+SQL injection is the placement of malicious code in SQL statements, via web page input.
+It usually happens in case of Dynamic query creation
+Statement stmt;
+stme.execute(SELECT * FROM Users WHERE UserId = " + userId)
+Hacker can pass like 105 OR 1=1, 
+Then it will become like SELECT * FROM Users WHERE UserId = 105 OR 1=1;
+The SQL above is valid and will return ALL rows from the "Users" table, since OR 1=1 is always TRUE
+How to Avoid: use Prepared STatement instead of Statement and set the values useing setter methods
+String insert = "INSERT INTO customer(name,address,email) VALUES(?, ?, ?);";
+PreparedStatement ps = connection.prepareStatement(insert);
+ps.setString(1, name);
+ps.setString(2, addre);
+ps.setString(3, email);
+
+ResultSet rs = ps.executeQuery();
+
+Q) How triggers work ?
+Trigger: A trigger is a stored procedure in database which automatically invokes whenever a special event in the database occurs. For example, a trigger can be invoked when a row is inserted into a specified table or when certain table columns are being updated
+
+create trigger stud_marks 
+before INSERT 
+on 
+Student 
+for each row 
+set Student.total = Student.subj1 + Student.subj2 + Student.subj3, Student.per = Student.total * 60 / 100;
+
+Q) When to use NoSql DataBase?
+- When huge amount of data need to be stored and retrieved .
+- The relationship between the data you store is not that important
+- The data changing over time and is not structured.
+- Support of Constraints and Joins is not required at database level
+- The data is growing continuously and you need to scale the database regular to handle the data.
+
+Q)Types of NoSQL database:
+Types of NoSQL databases and the name of the databases system that falls in that category are:
+
+Key value store: Memcached, Redis, Coherence
+Tabular: Hbase, Big Table, Accumulo
+Document based: MongoDB, CouchDB, Cloudant
+
+Q) What is indexed view, how does it work ?
+
+Q) Difference between Joins and Unions
+JOINS join tables
+UNION (et all) combines queries. Refer to the SQL-Joins.docx
+
+Q) Difference between Union and UnionAll ?
+Union gives only distinct values where as Union ALL returns duplicate values
+
+Q) Difference between Soft Delete and Hard delete ?
+Soft Delete: It means that you are flagging a record as deleted in a particular 
+table, instead of actually being deleting the record. You can have a flag(column) 'isActive'
+and set it 'N' to indicate that it is status is deleted. 
+In general, Dataware houses doesn’t entertain to delete a record from the table. It all depends upon the business requirements otherwise it is strictly prohibite
+
+Hard Delete: The records related to invalid transactions are fully deleted from 
+the source table by issuing a DML statement. It means you are completely removing the record from the table
+
+Q)

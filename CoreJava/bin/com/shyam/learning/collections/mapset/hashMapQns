@@ -1,0 +1,17 @@
+1) What will happen if we are using a Custom object as a key in hashMap in case
+- hashcode method is not implemented and equals method is implemented?
+
+- equals method is not overridden ?
+
+2) How to use a custom object as Key in HashMap ?
+
+3) What is the hash function in hashMap/how the index is calculated ?
+		return hashCode(key) & (n-1)
+		
+4) Load factor of HashMap = 0.75, capacity gets doubled
+The initial default capacity of Hashtable class is 11 whereas loadFactor is 0.75
+
+-- The Hashtable class has all its methods synchronized 
+i.e. the locking is done at the method level
+
+-- Difference between hashMap, linkedHashMap, TreeMap

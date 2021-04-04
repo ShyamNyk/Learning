@@ -1,0 +1,38 @@
+Java does automatic Garbage collection. 
+However there can be situations where garbage collector does not collect objects because 
+there are references to them. There might be situations where an application creates lots 
+of objects and does not use them. Just because every objects has valid references, 
+garbage collector in Java can’t destroys the objects. 
+Such types of useless objects are called as Memory leaks. 
+If allocated memory goes beyond limit, program will be terminated by rising OutOfMemoryError. 
+Hence if an object is no longer required, it is highly recommended to make that object eligible for garbage collector. 
+Otherwise We should use some tools that do memory management to identifies useless objects or memeory leaks like:
+If stream is not closed or connection is not closed
+
+HP OVO
+HP J METER
+JProbe
+IBM Tivoli
+
+Detecting Memory Leak:
+-----------------------
+Detecting memory leaks is a difficult task. 
+To simplify the task, there are many tools available that perform static analysis 
+and detect memory leaks:
+
+JProbe
+AppPerfect
+Visual VM
+Jprofiler
+YourKit
+GCeasy
+JRockit
+
+
+Fixing Memory Leak:
+----------------------------
+There are the following solutions to the memory leak problem:
+
+Using JVM Tools: There are many tools available that optimizes the code and show the memory status.
+Using Heap Dump: It is a technique that is the solution to the memory leak problem. It is a snapshot of all objects that reside in the memory at a certain time. It also optimizes memory usage in a Java application. It is stored in binary format in hprof
+Using Eclipse Memory Leak Warnings: If you are using the Eclipse framework to develop a Java application, eclipse regularly shows the waring and errors whenever it encounters any causes of memory leak.

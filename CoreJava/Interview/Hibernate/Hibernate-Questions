@@ -1,0 +1,71 @@
+-- What is Object relational mapping ?
+It is the process of persisting any java object directly to a database table.
+Usually, the name of the table being persisted becomes the name of the table
+and each field within that object becomes a column. With the table set up, each row 
+corresponds to a record in the application
+
+--What is JPA ?
+The java persistence API provides a specification for persisting, reading, and managing
+data from your java object to relational tables in the databases.
+JPA specifies the set of rules and guidelines for developing the interfaces that follows 
+standard. Straight to the point, JPA is just a guidelines to implement the Object 
+relational mapping (ORM) and there is not underlying code for the implementation.
+
+-- What is Hibernate ?
+Hibernate is an ORM tool that provides an implementation of JPA.
+Hibernate provides a reference implementation of Java persistence API, that makes it 
+a great choice as an ORM tool with the benifits of loose coupling.
+In sort, JPA is the interface and Hibernate is the implementation
+
+-- What is the Spring data JPA ?
+Spring data JPA is not a JPA provider. It is a library/framework that adds an extra
+layer of abstraction on the top of our JPA provider(like Hibernate)
+It adds a layer of top of JPA. It used all the features defined by JPA (specially the entity
+and the association mapping, entity life cycle management and JPA's query capability).
+Plus it adds it's own feaures like No code implementation of the repository pattern,
+creation of data base queries from the method names.
+
+-- Difference between Hibernate and Spring data JPA
+-Hibernate is a JPA implementation, while spring data JPA is a JPA data access Abstraction.
+Spring data offers a solution to Generic DAO custom implementation. It can also generate JAP
+queries on your behalf through method name conventions
+-With Spring Data, you may use Hibernate,Eclipse Link, or any other JPA provider.
+-Spring data JPA is not an implementation. It is just an abstraction used to significantly
+reduce the amount of boliler plate code required to implement the data access layers
+for various persistence stores
+-Remember, spring data JAP always requires the JAP provider such as Hibernate or Eclipse Link
+
+-- Advantages of Spring data JPA
+1) No-code Repository
+2) Reduced Boiler Plate Code
+3) Generation of Data base queries based on method names
+4) Spring data JPA seamlessly integrates JPA into Spring Stack
+5) Spring and Spring Data JPA makes the handling of Transactions extremely simple
+
+
+--Repositories in Spring Data JPA . All the below are Interfaces
+- CrudRepository
+- PagingAndSortingRepository
+- JPA repositroy - It adds few extra method like Flush
+
+-- Transaction management
+-Spring and Spring Data JPA makes the handling of Transactions extremely simple
+What is Transaction - Transaction manage changes in one or more systems. It may be databases, messsage brokers or any other system
+
+- Main Goal of Transaction is to proved ACID properties to your DATA
+Atomicity: All operations performed successfully or none
+Consistency: Takes your system from one consistent state to another consistent state. 
+Isolation:Changes performed in one transaction should not b visible to another transactoin
+Durability:
+
+--What is the N+1 query problem
+The N+1 query problem happens when the data access framework executed N additional 
+SQL statements to fetch the same data that could have been retrieved when executing 
+the primary SQL query.
+
+--
+
+
+
+
+

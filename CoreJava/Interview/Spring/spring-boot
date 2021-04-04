@@ -1,0 +1,32 @@
+1) How you can convert a jar to war file in spring boot ?
+Do the following three steps
+-	Extends SpringBootServletInitializer
+
+	@SpringBootApplication
+	public class DemoApplication extends SpringBootServletInitializer {
+
+	public static void main(String[] args) {
+	SpringApplication.run(DemoApplication.class, args);
+	}
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+	return builder.sources(DemoApplication.class);
+	}
+	}
+-   Update packaging to war in pom.xml
+- 	Marked the embedded servlet container as provided. inside pom file.
+	<!-- marked the embedded servlet container as provided -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-tomcat</artifactId>
+		<scope>provided</scope>
+	</dependency>
+	
+2) In case of multiple main class
+
+	<properties>
+		<!-- The main class to start by executing java -jar -->
+		<start-class>com.javavogue.DemoApplication</start-class>
+	</properties>
+	
+3)

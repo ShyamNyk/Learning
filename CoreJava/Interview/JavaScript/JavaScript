@@ -1,0 +1,9 @@
+1)Difference between == and === operator in JavaScript
+The ‘==’ operator tests for abstract equality i.e. it does the necessary type conversions before doing the equality comparison.
+But the ‘===’ operator tests for strict equality i.e it will not do the type conversion hence if the two values are not of the same type, when compared, it will return false.
+    document.write(9 == "9");  
+    document.write('<br>') 
+true
+false
+
+2)

@@ -1,0 +1,5 @@
+The below link contains all the hashmap related interview questoins 
+https://www.java67.com/2017/08/top-10-java-hashmap-interview-questions.html  
+https://codepumpkin.com/hashtable-vs-synchronizedmap-vs-concurrenthashmap/
+
+1) What is the use of hash field in hashMap ?

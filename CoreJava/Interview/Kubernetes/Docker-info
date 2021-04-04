@@ -1,0 +1,72 @@
+Q: What is Dockerfile used for?
+A:Docker file is a list of commands that we want the docker engine to execute.
+
+
+From openjdk:8
+MAINTAINER SHYAM
+copy ./target/xyz.jar xyz.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "xyz.jar"]
+
+Q: Difference between CMD and EntryPoint?
+
+CMD echo “Hello World” (shell form)
+CMD ["echo", "Hello World"] (exec form)
+
+ENTRYPOINT echo "Hello World" (shell form)
+ENTRYPOINT ["echo", "Hello World"] (exec form)
+
+In short, CMD defines default commands and/or parameters for a container. CMD is an instruction that is best to use if you need a default command which users can easily override. If a Dockerfile has multiple CMDs, it only applies the instructions from the last one.
+
+On the other hand, ENTRYPOINT is preferred when you want to define a container with a specific executable. You cannot override an ENTRYPOINT when starting a container unless you add the --entrypoint flag.
+
+Combine ENTRYPOINT with CMD if you need a container with a specified executable and a default parameter that can be modified easily. For example, when containerizing an application use ENTRYPOINT and CMD to set environment-specific variables.
+
+Q:Jar file with Arguments in docker ?
+ENTRYPOINT ["/path/to/my/java.jar"]
+CMD ["my", "default", "args"]
+
+docker run <my-docker-image> some custom args
+
+Q: What is docker image ?
+An image is a lightweight, stand-alone, executable package that includes everything 
+needed to run a piece of software, including the code, a runtime, libraries, 
+environment variables, and config files
+
+Q: How to build a docker image from docker file ?
+docker build [location of your dockerfile] Or docker build -t my_first_image .
+
+Q:List out all the images created
+docker images
+
+Q: Create a new Container from the docker image 
+docker run --name test my_first_image
+
+Q:How to push a docker image to docker hub
+docker push dockeraccountId/imagename:tag 
+
+Q: Docker Compose
+Compose is a tool for defining and running multi-container Docker applications. 
+With Compose, you use a YAML file to configure your application’s services. 
+Then, with a single command, you create and start all the services from your 
+configuration
+
+Q: What is Entry point in Docker ?
+ENTRYPOINT instruction allows you to configure a container that will run as an 
+executable. It looks similar to CMD, because it also allows you to specify a 
+command with parameters. The difference is ENTRYPOINT command and parameters 
+are not ignored when Docker container runs with command line parameters
+
+Q:
+
+Q: What is Docker?
+Docker is an open-source centralized platform designed to create, deploy, and run applications. Docker uses container on the host's operating system to run applications. It allows applications to use the same Linux kernel as a system on the host computer, rather than creating a whole virtual operating system. Containers ensure that our application works in any environment like development, test, or production
+
+Q: Different components of Docker ?
+Docker includes components such as Docker client, Docker server, Docker machine, Docker hub, Docker composes, etc.
+
+Q: Docker Swarm
+It is a clustering and scheduling tool for Docker containers. Swarm uses the Docker API as its front end, which helps us to use various tools to control it. It also helps us to control a cluster of Docker hosts as a single virtual host. It's a self-organizing group of engines that is used to enable pluggable backends
+
+Q:What is docker container ?
+It is an running instance of docker image 

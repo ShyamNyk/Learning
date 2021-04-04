@@ -1,9 +1,14 @@
-1)One of the core benefits of Java is the automated memory management with the help of the built-in Garbage Collector (or GC for short). The GC implicitly takes care of allocating and freeing up memory and thus is capable of handling the majority of the memory leak issues.
-While the GC effectively handles a good portion of memory, it doesn't guarantee a foolproof solution to memory leaking. The GC is pretty smart, but not flawless. Memory leaks can still sneak up even in applications of a conscientious developer.
-There still might be situations where the application generates a substantial number of superfluous objects, thus depleting crucial memory resources, sometimes resulting in the whole application's failure.
+Java does automatic Garbage collection. 
+However there can be situations where garbage collector does not collect objects because 
+there are references to them. There might be situations where an application creates lots 
+of objects and does not use them. Just because every objects has valid references, 
+garbage collector in Java can’t destroys the objects. 
+Such types of useless objects are called as Memory leaks. 
+If allocated memory goes beyond limit, program will be terminated by rising OutOfMemoryError. 
+Hence if an object is no longer required, it is highly recommended to make that object eligible for garbage collector. 
+Otherwise We should use some tools that do memory management to identifies useless objects or memeory leaks like:
 
-2)A Memory Leak is a situation when there are objects present in the heap that are no longer used, but the garbage collector is unable to remove them from memory and, thus they are unnecessarily maintained.
-
-A memory leak is bad because it blocks memory resources and degrades system performance over time. And if not dealt with, the application will eventually exhaust its resources, finally terminating with a fatal java.lang.OutOfMemoryError.
-
-https://www.baeldung.com/java-memory-leaks
+HP OVO
+HP J METER
+JProbe
+IBM Tivoli

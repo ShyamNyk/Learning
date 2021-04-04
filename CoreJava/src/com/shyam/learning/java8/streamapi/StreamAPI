@@ -1,0 +1,59 @@
+https://www.netjstech.com/2017/08/java-lambda-expressions-interview-questions.html
+
+1)What is stream ?
+Stream is a sequence of data. It takes input from collections or i/o, 
+perform some computational operations on it and gives the output
+- Streams have no storage
+- Streams can represent a sequence of infinite elements 
+- The design of stream is based on internal iterations
+- Streams are designed to be processed parallel with no additional work from the developers
+
+2)How it different from collection ?
+Collection focuses on the storage of the data where as stream focuses on
+aggregate computation on data elements from a data source
+
+3) What is parallel Stream ?
+- Partitioning of stream of data into smaller streams to make parallel processing possbile.
+- Parallel processing of the data
+
+Q: Explain Java 8-Intermediate operations vs. Terminal operations?
+A: Stream operations can be divided in two parts-
+-Intermediate operations- Intermediate operations which return another Stream which allows operations to be connected in a form of a pipeline
+-Terminal operations- Terminal operations produces a non-stream, result such as primitive value, a collection or no value at all.
+-The distinction between this operations is that an intermediate operation is lazy 
+while a terminal operation is not. When you invoke an intermediate operation on a 
+stream, the operation is not executed immediately. It is executed only when a 
+terminal operation is invoked on that stream. In a way, an intermediate operation 
+is memorized and is recalled as soon as a terminal operation is invoked. 
+You can chain multiple intermediate operations and none of them will do anything 
+until you invoke a terminal operation. At that time, all of the intermediate 
+operations that you invoked earlier will be invoked along with the terminal operatio
+-stream()
+    .intemediateOperation1()
+    .intemediateOperation2()
+    ...
+    .intemediateOperationN()
+    .terminalOperation();
+
+-- Terminal Operations:
+1. The allMatch() operation
+2. The anyMatch() operation
+3. The noneMatch() operation
+4. The collect() operation
+5. The count() operation
+6. The forEach() operation
+7. The min() operation
+8. The max() operation
+9. The reduce() operation
+
+-- Intermidiate Operations
+filter(Predicate<T>)
+map(Function<T>)
+flatMap(Function<T>)
+sorted(Comparator<T>)
+peek(Consumer<T>)
+distinct()
+limit(long n)
+skip(long n)
+
+

@@ -1,0 +1,37 @@
+Q) --SQL Injection
+SQL injection is one of the most common web hacking techniques
+SQL injection is the placement of malicious code in SQL statements, via web page input.
+SQL injection can be used to bypass login algorithms, retrieve, insert, and update and delete data.
+SQL injection usually happens in case of dynamic query creation
+String accountBalanceQuery = 
+  "SELECT accountNumber, balance FROM accounts WHERE account_owner_id = " 
+  + request.getParameter("user_id");
+
+try {
+    Statement statement = connection.createStatement();
+    ResultSet rs = statement.executeQuery(accountBalanceQuery);
+    while (rs.next()) {
+        page.addTableRow(rs.getInt("accountNumber"), rs.getFloat("balance"));
+    }
+} catch (SQLException e) { ... }
+
+https://bankingwebsite/show_balances?user_id=984
+SELECT accountNumber, balance FROM accounts WHERE account_owner_id = 984
+SELECT accountNumber, balance FROM accounts WHERE account_owner_id = 0 OR 1=1
+
+Repair:
+------------
+String accountBalanceQuery = 
+  "SELECT accountNumber, balance FROM accounts WHERE account_owner_id = ?";
+
+try {
+    PreparedStatement statement = connection.prepareStatement(accountBalanceQuery);
+    statement.setInt(1, request.getParameter("user_id")); 
+    ResultSet rs = statement.executeQuery();
+    while (rs.next()) {
+        page.addTableRow(rs.getInt("accountNumber"), rs.getFloat("balance"));
+    }
+} catch (SQLException e) { ... }
+
+If an attacker attempts to supply a value that’s not a simple integer, then statement.setInt() will throw a SQLException error rather than permitting the query to complete
+

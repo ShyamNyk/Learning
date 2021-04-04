@@ -1,0 +1,13 @@
+module.exports = {
+	appRootUrl: "https://vmsssodemo01.amr.corp.intel.com/SamlNodeJs/",
+	saml: {
+		path: "/consume",
+		entryPoint: "https://sfederationdev.intel.com/federation/SampleSamlNodeJs.asp",
+		issuer: "SampleSamlNodeJs",
+		cert: "MIIDGTCCAgGgAwIBAgIJAOtZUbLYgSmeMA0GCSqGSIb3DQEBBQUAMCMxITAfBgNVBAMMGHNmZWRlcmF0aW9uZGV2LmludGVsLmNvbTAeFw0xNTAzMDUxNzM4MTNaFw0yNTAzMDUxNzM4MTNaMCMxITAfBgNVBAMMGHNmZWRlcmF0aW9uZGV2LmludGVsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALrC6Qd6ilv66FRKDWk0gPnWalBCIIpvop0zgrO91TZdABD5QYZ7LBnJyncoGwGKv5kI9h4rVatmFc1wOuOtyZ6mZiZULSbqMGGbIwUjQiJhQ29zJekHz+HVCSPT2B2ydj4lteIY281u0I8wYZLOCAAoIX8EM1E6p9GlqLLCaDh+H8UXTxtUpMTeZIvAbx6+Uqo75rSZP2DbPjAeTMcw8whOaNzK0ArXblEe15Kl4a0DiXcZVk9blweiEOaXTRWfLVMIR3uNsYYCS+RuUNiEkF1c6bUHYM06F8XH8Rb7MdfBUC8lAP+U0PXtufKota0uXFkJr/fej/4d+r3l8IGZfFcCAwEAAaNQME4wHQYDVR0OBBYEFLjaO7sDDY85kJrONUlJw+zIEQQUMB8GA1UdIwQYMBaAFLjaO7sDDY85kJrONUlJw+zIEQQUMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADggEBAIrldxX8X2qGwp3u4EX7q52G3XxOEJ4xRzsSLqsvFhNMWHtSUpE9+FV9rl7YnALCLT9ItU8tjv7JaRyilv4EFNQlr4kZEbBSJjEuNyd/2UjenpBO/1DjfjrNQdeoBqqDQ/mtcu6dfKnRysEeXG5dfnu9Xr8ACKrHFi3Mea536QNziYV8DjRtn0UqNSrgLP2wensPrZoCS1Ft6kBpxXgsC/ZC7Yxb4ANhku0RUvQqxX2Im0KA9nQhg5HfO7ntlxrcOpJ5wAjmOnkgsI7fmRrf5RVpgMhkwwW+c155Wl4M+foQjhoZVfyEAkSfCLHtoRCtuuBckHi1MvVpMlYbJ5eb/M8=",
+		disableRequestedAuthnContext: true,
+		identifierFormat: null,
+		acceptedClockSkewMs: 30000
+	}, 
+	samlIdpLogoutUrl: "https://signindev.intel.com/Logout?Target=https%3a%2f%2fvmsdasmfss01.amr.corp.intel.com%3a3001%2f"
+};

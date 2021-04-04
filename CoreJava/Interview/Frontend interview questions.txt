@@ -1,0 +1,522 @@
+
+JS
+Level 1
+1)	How are variables created behind the scenes?
+JavaScript variables are containers for storing data values.
+It can be declared with var, let, const
+2)	What is hoisting?
+In other words; a variable can be used before it has been declared.
+x = 5; // Assign 5 to x
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x;                     // Display x in the element
+var x; 
+Variables defined with var are hoisted to the top and can be initialized at any time
+If a variable is defined using the const keyword, its scope is limited to the block scope. In addition the variable cannot be reassigned to a different value.
+
+
+3)	const, let, var?
+var is functional scope
+let, const are both BLOCK scope
+const, cannot be reassigned, however it is mutable
+
+4)	what is Anonymous function? Faction without a name
+var myFunction = function() {
+   // Function code
+}
+In conclusion, an anonymous function is a function that is not stored but is associated with a variable. Anonymous functions can accept inputs and return outputs, just as standard functions	
+
+5)	What is closure? Where you have used this concept?
+	a. 
+		const arr = [10, 12, 15, 21];
+		for (var i = 0; i < arr.length; i++) {
+		setTimeout(function() {
+		console.log('Index: ' + i + ', element: ' + arr[i]);
+		}, 3000);
+		}
+		sol: const arr = [10, 12, 15, 21];
+		for (var i = 0; i < arr.length; i++) {
+		// pass in the variable i so that each function
+		// has access to the correct index
+		setTimeout(function(i_local) {
+		return function() {
+		console.log('The index of this number is: ' + i_local);
+		}
+		}(i), 3000);
+		}
+	b. 
+		var a= 1;
+		function abc(a){
+		console.log(a);
+		} abc(); // undefined
+		
+	c. using fat arrow
+6)	Create a function capitalize, such that you can use “saurabh”.capitalize() => “Saurabh”
+
+7)	Difference between for, forIn, forOf, forEach?
+for (let i = 0; i < arr.length; ++i) {
+  console.log(arr[i]);
+}
+
+for (let i in arr) {
+  console.log(arr[i]);
+}
+
+arr.forEach((v, i) => console.log(v));
+
+for (const v of arr) {
+  console.log(v);
+}
+
+8)	what is the output:
+	
+		console.log(1);
+		for(var i=0;i<5;i++){
+		setTimeout(function(){
+		console.log(i);
+		},0)
+		}
+		console.log(10);
+9)	what is the output:
+	console.log(1)
+	[1,2,3,4,5].map(function(item){
+	console.log(item);
+	})
+	console.log(10);
+10)	rest and spread operator?
+
+let arr = [3, 5, 1];
+alert( Math.max(arr) ); // NaN
+let arr = [3, 5, 1];
+alert( Math.max(...arr) ); // 5 (spread turns array into a list of arguments)
+
+// A function can be called with any number of arguments, no matter how it is defined.
+function sum(a, b) {
+  return a + b;
+}
+alert( sum(1, 2, 3, 4, 5) );
+
+11)	async await and promise?
+First of all we have the async keyword, which you put in front of a function declaration to turn it into an async function.
+So the async keyword is added to functions to tell them to return a promise rather than directly returning the value.
+
+12)	event bubbling?
+When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.
+
+13)	difference between ref and value 
+Javascript has 5 data types that are passed by value: Boolean, null, undefined, String, and Number. We’ll call these primitive types.
+Javascript has 3 data types that are passed by reference: Array, Function, and Object. These are all technically Objects, so we’ll refer to them collectively as Objects.
+
+14)	Call bind apply : difference
+Use .bind() when you want that function to later be called with a certain context, useful in events. Use .call() or .apply() when you want to invoke the function immediately, and modify the context
+
+15)	how “This” keyword works
+// In web browsers, the window object is also the global object:
+console.log(this === window); // true
+a = 37;
+console.log(window.a); // 37
+
+16)	how to check below options what is the condition  
+	a)	null, undefined 
+	b)	empty string, null, undefined 
+	c)	empty object
+	d)	if it is not an array
+	e)	check if value is a number
+17)	output of following 
+	a)	false == 0 // true
+	b)	[] == true  // false
+	c)	{} == false / error
+	d)	{} == {} // false
+	e)	2 && 0  / 0
+	f)	2 || 0  // 2
+
+
+Level 2:
+1)	[11, 5, -1, 15, 20, -5, 4, 6], 
+	a)	find all the pairs that results in sum 10
+	b)	pairs which results in max sum
+
+2)	Array of integers. Find Index of elements which are equal to the sum of all of its succeeding elements.
+	a = [6,6,3,7,3,4] | output - 3
+3)	[4, 10, 4, 6, 2, 7, 1, 9]
+	a.	Remove duplicates ( soln : create object and get keys )
+	b.	Find the second highest value
+1)	Design patterns in JS and which and how you have used it in your app with an example?
+Some examples discussed in the article above include the constructor pattern, the module pattern, the revealing module pattern, the singleton pattern, the observer pattern, the mediator pattern, the prototype pattern, the command pattern, and the facade pattern.
+
+2)	Design your promise framework
+3)	What are higher order functions
+A Higher-Order function is a function that receives a function as an argument or returns the function as output. For example, Array
+4)	Prototypal Inheritance and DI
+5)	When user starts scrolling it the header slides down and after 2 second it auto hides and again on scroll same behavior
+
+
+
+Angular
+Level 1: 
+1)	Bootstrapping of angular applications.
+Index.html loads
+Angular, Third-party libraries & Application loads
+Main.ts the application entry point under src folder . It finds the entry point form Angular.json file
+Root Module - src/app.module.ts - we use @NgModule to annotate something as component
+Root Component - appComponent.ts
+Template-app.component.html
+2)	Component Lifecycle?
+8 Lifecycle Hooks
+ngOnChanges()
+ngOnInit()
+ngDoCheck()
+ngAfterContentInit()
+ngAfterContentChecked()
+ngAfterViewInit()
+ngAfterViewChecked()
+ngOnDestroy()
+
+3)	What is the main difference between constructor and ngOnInit?
+The main difference between constructor and ngOnInit is that ngOnInit is lifecycle hook and runs after constructor. 
+Component interpolated template and input initial values aren't available in constructor, but they are available in ngOnInit
+The primary role of class constructors in Angular is dependency injection. Constructors are also used for DI annotation in TypeScript.
+Constructor should be used only for DI
+ngOnInit() is a better place to write “actual work code” that we need to execute as soon as the class is instantiated.
+
+4)	What is Transpiling in Angular?
+Transpiling is the one o the process to convert the typescript into javascript. We can do this by using Traceur, a JS compiler. TypeScript is a typed superset of JavaScript that compiles to plain JavaScript
+
+5)	different ways of transferring data between components for child-parent/siblings?
+6)	Difference between subject and behavior subject?
+A BehaviorSubject holds one value. When it is subscribed it emits the value immediately. A Subject doesn't hold a value.
+const subject = new Rx.Subject();
+subject.next(1);
+subject.subscribe(x => console.log(x));
+
+const subject = new Rx.BehaviorSubject(0);
+subject.next(1);
+subject.subscribe(x => console.log(x));
+Console output: 1
+
+
+
+7)	Can ngIf and ngFor be used in a single element?
+You can't have ngFor and ngIf on the same element.
+Why we cannot use two structural directives on same element bcs When two directives placed on same element we cannot decide which one takes precedence i.e., which should execute first *ngIf or *ngFor?
+
+8)	multiple condition in template. How will you handle it?  (soln: ngswitch)
+
+9)	RX JS operators?
+RxJS stands for Reactive Extensions for JavaScript
+RxJS is a popular library among web developers. It provides functional and reactive programming patterns for working with events and streams of data and has been integrated in many web development libraries and frameworks such as TypeScript and Angular.
+Reactive Programming is programming with asynchronous data streams
+npm install rxjs.There many RxJS operators such as:
+tap(),
+map(),
+filter(),
+concat(),
+share(),
+retry(),
+catchError(),
+switchMap(),
+and flatMap() etc.
+
+10)	Data binding in angular (two way data binding)
+Data binding in AngularJS is the synchronization between the model and the view
+
+-String Interpolation. - {{ code }}
+-Property Binding. - [disabled]="currentValue" 
+-Event Binding.
+<h1 Event Binding></h1>
+<h1>{{title}}</h1>
+<button (click)="changeMyTitle()">Title is changed on click of this button.</button>
+-Two-Way Data Binding. - <input type = "text" [(ngModel)]="userName"/>
+
+You can also use double braces {{ }} to display content from the model:
+<input ng-model="firstname">
+
+<tr *ngFor="let hardPhone of hardPhoneList">
+                <td>{{hardPhone.phone}}</td>
+				
+ dropDownForm = new FormGroup({
+    clusterName: new FormControl('', [Validators.required]),
+    campusName: new FormControl('')
+  });
+select id="campus-dw" formControlName="campusName" class="form-control"
+
+
+11)	What is the difference between ngIf and hidden property?
+ngIf - Angular's structural directive,
+Why ngIf directive remove the element rather than hide it
+hidden property- Normal HTML5 attribute
+
+12)	Directive used for? What are the built in directives? Structural directive? @HostListner and @HostBinding?
+
+These are the Document Object Model (DOM) instruction sets, which decide how logic implementation can be done.
+-Component Directives: Component directives are used in main class. They contain the detail of how the component should be processed, instantiated and used at runtime.
+-Structural Directives: Structural directives start with a * sign. These directives are used to manipulate and change the structure of the DOM elements. For example, *ngIf and *ngFor.
+-Attribute Directives: Attribute directives are used to change the look and behavior of the DOM elements. For example: ngClass, ngStyle etc.
+
+1-Component Directives:It forms the main class and is declared by @Component. 
+	Selector: Tells the template tag which specifies the beginning and end of the component.
+	templateURL: Consists of the template used for the component.
+	styleUrls: It is of array type which consists of all the style format files used for the template.
+2-Structural Directives: Structure directives manipulate the DOM elements. These directives have a * sign before the directive. For example, *ngIf and *ngFor.
+
+HostBinding('value') myValue; is exactly the same as [value]="myValue"
+And
+HostListener('click') myClick(){ } is exactly the same as (click)="myClick()"
+@HostListener - will listen to the event emitted by the host element that's declared with
+@HostBinding - will bind the property to the host element, If a binding changes, HostBinding will update the host element.
+@HostBinding: This decorator binds a class property to a property of the host element.
+@HostListener: This decorator binds a class method to an event of the host element.
+	
+
+13)	What is the purpose of ngFor trackBy? async pipe in ngFor?
+-Angular provides the trackBy feature which allows you to track elements when they are added or removed from the array for performance reasons. We can simply identify each element in a unique way using its id
+-The async pipe in angular will subscribe to an Observable or Promise and return the latest value it has emitted. Whenever a new value is emitted from an Observable or Promise, the async pipe marks the component to be checked for changes
+
+14)	Lazy loading of angular modules?
+Lazy loading is a technique in Angular that allows you to load JavaScript components asynchronously when a specific route is activated. It improves the speed of the application load time by splitting the application into several bundles. When the user navigates through the app, the bundles are loaded as required
+
+15)	What is AOT(Ahead of Time) Compilation?
+AOT provides better security. It compiles HTML components and templates into JavaScript files long before they are served into the client display.
+What is the Just in Time (JIT) compiler ?
+Just in time compiler provides compilation during the execution of the program at a run time before execution. In simple words, code get compiles when it’s needed, not at the build time.
+
+16)	Different types Route Guards?
+ The Angular supports several guards like CanActivate, CanDeactivate, Resolve, CanLoad, and CanActivateChild. These guards help us to secure the route or to perform some actions before navigating into a route or leaving the route
+ 
+17)	Resolving dynamic data? resolve guard?
+
+18)	View Encapsulation? @ViewChild and @ContentChild
+View encapsulation defines whether the template and styles defined within the component can affect the whole application or vice versa. All components with None encapsulation will have their styles duplicated in all components with Native encapsulation
+
+19)	ng-content vs ng-template
+ng-content is used to project content into Angular components. In plain HTML, you can create children in any element, like this:
+<div class="parent">
+  Parent
+  <div class="child">
+    Child
+  </div>
+</div>
+
+
+<app-wrapper>
+  <div style="background-color: green; padding: 20px">
+    Child
+  </div>
+</app-wrapper>
+
+
+<div style="background-color: red; padding: 20px">
+  Wrapper
+  <ng-content></ng-content>
+</div>
+
+ng-template: ng-template is used to render HTML in a template but is never rendered directly. If you add a ng-template tag to your template, it and everything inside it will be replaced by a comment.
+
+ng-template
+The <ng-template> is an Angular element for rendering HTML. It is never displayed directly. Use for structural directives such as: ngIf, ngFor, ngSwitch,..
+Example:
+
+<div *ngIf="hero" class="name">{{hero.name}}</div>
+Angular translates the *ngIf attribute into a <ng-template> element, wrapped around the host element, like this.
+
+<ng-template [ngIf]="hero">
+  <div class="name">{{hero.name}}</div>
+</ng-template>
+ng-container
+Use as a grouping element when there is no suitable host element.
+Example:
+
+<div>
+  Pick your favorite hero
+  (<label><input type="checkbox" checked (change)="showSad = !showSad">show sad</label>)
+</div>
+<select [(ngModel)]="hero">
+  <span *ngFor="let h of heroes">
+    <span *ngIf="showSad || h.emotion !== 'sad'">
+      <option [ngValue]="h">{{h.name}} ({{h.emotion}})</option>
+    </span>
+  </span>
+</select>
+
+20)	What is the use of zone.js
+Zone. js is an execution context that helps developers intercept and keep track of async operations. Zone works on the concept of associating each operation with a zone. Each zone can fork and create a child zone with a different context
+
+
+Level 2:
+1)	Reactive Forms (nested forms)?
+myForm = new FormGroup({
+      name: new FormControl('Benedict'),
+      email: new FormControl(''),
+      message: new FormControl('')
+	  
+2)	.pipe , tap, switchMap, finalize, forkjoin, skipWhile?
+3)	multiple API requests and you have to wait until all the requests are finished. Which operator you will use and if in case of error in one of the API how you will you handle?
+4)	How do you create dynamic components? 
+5)	what are the 2 pipes(pure/impure). When you can use these?
+6)	What‘s the difference between unit testing and end-to-end testing? What are some testing tools you would use for an Angular application?
+7)	What is the difference between promise and observable?
+Both observables and promises help us work with asynchronous functionality in JavaScript. Promises deal with one asynchronous event at a time, while observables handle a sequence of asynchronous events over a period of time. Let’s see the difference between these two.
+
+8)	How do you update the view if your data model is updated outside the ‘Zone’?
+9)	Singleton Pattern with code and example in angular
+10)	What is Change Detection, how does Change Detection Mechanism work? 
+11)	What change detection strategies do you know?
+12)	Heard of Ivy & Bazel?
+13)	How will you frame your architecture? 
+14)	What’s the most important thing to look for or check when reviewing another team member’s code?
+15)	How to load Dynamic components? (Eg: loading the components from a json) 
+
+Node
+Level 1:
+1)	Advantage of node over other programing languages?
+Well, the implest definition of Node.js is that it is a Javascript run-time environment that helps in the execution of JavaScript code server-side.
+Node.js has been regarded as a full-stack JavaScript for serving both the client and the server-side applications.
+Therefore, the advantage is that you don’t have to hire separate developers for backend as well as the front-end development. It saves both your valuable money and time.
+
+2)	Why is Node.js Single-threaded
+3)	How do you emit events and capture the events?
+4)	JS is single threaded... I have a 4 core machine... Using Node JS I need to make use of all the cores available.. How that can be done?
+5)	What are middleware’s? Why it is used?
+6)	How routes are configured in express?
+7)	What is piping in Node.js
+8)	How would you connect a MongoDB database to Node.js
+9)	How do you open a file in Node.js?
+10)	What is the difference between process.nextTick() and setImmediate()
+
+Level 2: 
+1)	Create the session and extend the session in Node JS
+2)	Explain what is Reactor Pattern in Node.js
+
+
+
+HTML5
+Level 1:
+1)	What is the use of the semantic elements?
+Semantic elements = elements with a meaning.
+A semantic element clearly describes its meaning to both the browser and the developer.
+Examples of non-semantic elements: <div> and <span> - Tells nothing about its content.
+Examples of semantic elements: <form>, <table>, and <article> - Clearly defines its content.
+Semantic HTML refers to syntax that makes the HTML more comprehensible by better defining the different sections and layout of web pages. It makes web pages more informative and adaptable, allowing browsers and search engines to better interpret content
+
+2)	Different types of inputs types available in html5?
+<input type="text"> defines a single-line text input field:
+<input type="password"> defines a password field:
+<input type="submit"> defines a button for submitting form data to a form-handler
+<input type="reset">
+<input type="radio">
+<input type="checkbox">
+<input type="button" onclick="alert('Hello World!')" value="Click Me!">
+<input type="color">
+<input type="date">
+<input type="email">
+
+
+3)	Use of meta tags? How to handle the zoom?
+The <meta> tag defines metadata about an HTML document. Metadata is data (information) about data.
+<meta> tags always go inside the <head> element, and are typically used to specify character set, page description, keywords, author of the document, and viewport settings.
+Metadata will not be displayed on the page, but is machine parsable.
+Metadata is used by browsers (how to display content or reload page), search engines (keywords), and other web services.
+There is a method to let web designers take control over the viewport (the user's visible area of a web page), through the <meta> tag (See "Setting The Viewport" example below).
+Using view port metadata - <meta name="viewport" content="width=device-width, initial-scale=1">
+
+4)	HTML 5 APIs
+Geolocation - Provides web applications with access to geographical location
+data about the user’s device.
+Fullscreen API-Controls the use of the user’s full screen for web pages,
+without the browser user interface.
+History API - Allows programs to manipulate the browser history.
+Selection -Supports selecting elements in JavaScript using CSS-style selectors.
+
+5)	What are session storage and local storage... How does it differ from cookie? How can you clear all 3?
+HTML web storage provides two objects for storing data on the client:
+window.localStorage - stores data with no expiration date-  The data will not be deleted when the browser is closed, and will be available the next day, week, or year.
+window.sessionStorage - stores data for one session (data is lost when the browser tab is closed)
+The stored data has no expiration date in local storage. With cookies, you can set the expiration duration.
+If you want to clear local storage, then do it by clearing the browser cache. You can also use JavaScript for this. Local Storage is for client side, whereas cookies are for the client as well as server side.
+localStorage.clear();
+sessionStorage.clear();
+
+6)	If I have three tabs, in tab 1 & 2 same session is going on and in third tab some different session is going on? Will the session storage be cleared if 
+a.	tab 1 is closed b) tab 3 is closed c)all tabs are closed
+
+7)	On enter how you can trigger the submit?
+var input = document.getElementById("myInput");
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("myBtn").click();
+  }
+});
+
+8)	How will you manage multiple calls to images/icons and SVG image and its use?
+
+
+Level 2:
+6)	How do you load the scripts asynchronously?
+//this function will work cross-browser for loading scripts asynchronously
+function loadScript(src, callback)
+{
+  var s,
+      r,
+      t;
+  r = false;
+  s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.src = src;
+  s.onload = s.onreadystatechange = function() {
+    //console.log( this.readyState ); //uncomment this line to see which ready states are called.
+    if ( !r && (!this.readyState || this.readyState == 'complete') )
+    {
+      r = true;
+      callback();
+    }
+  };
+  t = document.getElementsByTagName('script')[0];
+  t.parentNode.insertBefore(s, t);
+}
+7)	How you will you improve performance?
+8)	Accessibility (role, aria labels, headers, keyboard navigation via tab index, enter you submit the form)?
+
+
+
+CSS3
+Level 1 only
+1)	What are the different preprocessors available and what is the use and how will you do the theming?
+CSS preprocessors are scripting languages that extend the default capabilities of CSS. They enable us to use logic in our CSS code, such as variables, nesting, inheritance, mixins, functions, and mathematical operations. CSS preprocessors make it easy to automate repetitive tasks, reduce the number of errors and code bloat, create reusable code snippets, and ensure backward compatibility.
+
+Each CSS preprocessor has its own syntax that they compile into regular CSS so that browsers can render it on the client side. Currently, the three most popular and stable CSS preprocessors are Sass, LESS, and Stylus, however there are many smaller ones as well. CSS preprocessors all do similar things but in a different way and with their own syntaxes. Each of them has some advanced features unique to them and their own ecosystem (tools, frameworks, libraries) as well.
+
+2)	Center an element in a square box using flex and without flex? 
+
+<div class="box flex">
+  <p>
+    <img src="/images/pirate.svg" width="75">
+    arrr!
+  </p>
+  <p>
+    <img src="/images/cowboy.svg" width="75">
+    yeehaw!
+  </p>
+</div>
+.box.flex {
+  display: flex;
+  justify-content: center;
+}
+
+3)	Which properties are used for main axis and cross axis alignment?
+4)	What are the different ways and which is the best ways to add CSS and why?
+5)	how to create responsive design and if you have to target tablet how will you do it?
+6)	difference between pseudo class and pseudo elements?
+A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s)
+A CSS pseudo-element is a keyword added to a selector that lets you style a specific part of the selected element(s)
+
+7)	Use of @extend and Mixins in sass
+8)	How do you select the sibling of an element?
+9)	What is use of EM and REM and how will you set it?
+10)	How will you create popup?
+
+
+

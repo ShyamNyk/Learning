@@ -1,0 +1,13 @@
+If your class is extending the Thread class then it becomes a single thread 
+which inherits the properties Thread class, so it'll be heavy. 
+(When extending Thread class each of the threads creates unique object 
+and associate with it, but when implementing Runnable, 
+it shares the same object to multiple Threads).
+
+If your class is Implementing the Runnable interface then you only override the run() .
+So this instance creates a separate Thread and every individual Thread runs separately 
+but not as a single heavy Thread in your program. Another thing, 
+Since Java does not support multiple inheritance, 
+if you implement the Runnable you'll avoid problems of multiple extending, 
+so if you implement Runnable interface you can extend any class that you are required 
+other than Thread class.

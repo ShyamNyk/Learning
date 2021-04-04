@@ -1,0 +1,48 @@
+1)Multiply two numbers witout using multiplication operator 
+2)Swap two strings
+
+
+1) Desing a load balancer using java
+2) Design a cache using java
+3) Matrix related questions
+4) Yatra,GlobalLogic,cleartrip,Harman interview quetions
+
+7)design mini-bank application(Including database design,login,exception handling,logs & multi-threading) within 90 min.
+8)Longest Even Length Substring such that Sum of First and  Second Half is same
+9)Find minimum number of coins that make a given value
+
+13)Design a system like Amazon which should have a feature of recently viewed items.
+The Interviewer was looking for Caching and a key-value data store.
+14)Code Consumer Producer problem using multi-threading.
+15) Java program to sort strings
+17)Find the minimum element, maximum element, 3 larger elements in the array,maximum repeaing number in an array, maximum difference ,How to find all Pairs in Array of Integers whose Sum is equal to a given Number,Find the Rotation Count in Rotated Sorted array
+18) Write a multi threading program to print odd and even numbers
+19)design a LRU cache
+20)design an immutable class
+21) Synchroniser,executor,cyclic barrier
+22) Bean life cycle
+23) WAP to test the pattern of a curly braces , closing of curly braces
+24) Chess borad problme in java, matrix problem
+25) Remove an element from hashmap while iterating
+26)How to create 10000 threads to deal with the data that have been retrieved from DB
+27) Design ur own date class in java
+28) Desin a vening machine
+29)Number of flips to make binary string alternate
+30) Memory leak in java
+31) Transactions in java
+32)Why String class is immutable even though it has a non -final field called “hash”
+When the ratio of entries to the size of a main array exceeds a certain value (the "load factor") the HashMap implementation expands the array. When this happens, all existing entries need to be redistributed to new hash chains ... based on the entry keys' has values. The hash values are stored in the Entry objects so that they doesn't have to be recalculated each time the entries need to be redistributed.
+
+Linked List:
+1) Detection of a loop insise a linked list
+2) Add two numbers represented by linked lists
+
+
+
+What is solid principle in java ?
+https://www.jrebel.com/blog/solid-principles-in-java
+
+
+
+
+

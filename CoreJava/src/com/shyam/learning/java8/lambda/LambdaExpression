@@ -1,0 +1,77 @@
+https://www.netjstech.com/2017/08/java-lambda-expressions-interview-questions.html
+
+1) What is the use of Lambda expressions ?
+- Enables functional programming 
+- Lambda expression is a natural replacement for anonymus classes
+- Inline implementation of functional interfaces
+- It is very useful in collection library. 
+  It helps to iterate, filter and extract data from collection.
+ -Java lambda expression is treated as a function, 
+  so compiler does not create .class file
+
+2) Java lambda expression is consisted of three components.
+-Argument-list: It can be empty or non-empty as well.
+-Arrow-token: It is used to link arguments-list and body of expression.
+-Body: It contains expressions and statements for lambda expression.
+() -> {  
+//Body of no parameter lambda  
+} 
+
+3) Lambda expression can have zero parameter or multiple parameter
+   Lambda expression can have return satement or no return statement
+   
+4)Java Lambda Expression Example: Foreach Loop
+ List<String> list=new ArrayList<String>();  
+        list.forEach(  
+            (n)->System.out.println(n)  
+        );  
+        
+5)Few examples of functional interface
+Runnable, Comparable, ActionListner, Consumer, Predicate, Supplier, Function
+
+6)Why use an anonymous class?
+Anonymous classes can be time-savers and reduce the number of .java files necessary to define an application. 
+You may have a class that is only used in a specific situation such as a Comparator. 
+This allows an "on the fly" creation of an object.
+You may find you prefer to use anonymous classes; many people use them extensively to implement listeners on GUIs.
+
+7)Lamda expression can access local variables, instance variables, static variables
+
+8)What is block lambda expression?
+A block lambda is the lambda expression where the right side of the lambda expression is a block of code.
+
+IMyFunc myFactorialFunc = (num) -> {
+  int fact = 1;
+  for(int i = 1; i <= num; i++){
+    fact = i * fact;
+  }
+  return fact;
+};Where as (String s1, String s2) -> s1+s2; is a single expression lambda.
+
+9)Which package contains functional interfaces
+java.util.function 
+
+10)Abstract Class vs Java 8 Interface
+After having default and static methods inside the interface, 
+we think about the need of abstract class in Java. 
+An interface and an abstract class is almost similar 
+except that you can create constructor in the abstract class whereas you can't do this in interface.
+Multiple inheritance is not possible using abstract class
+
+11)What is diamond problem in java ?
+In Java, the diamond problem is related to multiple inheritance. Sometimes it is also known as the deadly diamond problem or deadly diamond of death. In this section, we will learn what is the demand problem in Java and what is the solution to the diamond problem
+Two functional interface having same method and child class implements both of them.
+In case child class call these methods using child class object.
+Then ambiguity will happen and it will create 
+
+12)-Anonymous class is an inner class without a name, which means that we can declare 
+and instantiate class at the same time. A lambda expression is a short form for 
+writing an anonymous class. By using a lambda expression, we can declare methods 
+without any name.
+-An anonymous class object generates a separate class file after compilation 
+that increases the size of a jar file while a lambda expression is converted 
+into a private method. It uses invokedynamic bytecode instruction to bind this 
+method dynamically, which saves time and memory.
+
+13)
+

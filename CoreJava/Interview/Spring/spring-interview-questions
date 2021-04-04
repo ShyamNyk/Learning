@@ -1,0 +1,72 @@
+1) What is dependency injection ? 
+
+2)Types of IOC containers in Spring Framework
+There are basically two types of IOC Containers in Spring:
+BeanFactory: BeanFactory is like a factory class that contains a collection of beans. 
+It instantiates the bean whenever asked for by clients.
+ApplicationContext: The ApplicationContext interface is built on top of the BeanFactory interface. 
+It provides some extra functionality on top BeanFactory.
+
+3)What is circular dependency in spring ?
+
+4) How to fix circular dependency ?
+Use @Lazy Annotation
+Redesign you class dependency
+Use Setter/Field Injection
+Use @PostConstruct Annotation
+
+
+-- Life cycle of a spring bean ?
+Bean life cycle is managed by the spring container. When we run the program then, 
+first of all, the spring container gets started. After that, the container creates the 
+instance of a bean as per the request and then dependencies are injected. And finally, 
+the bean is destroyed when the spring container is closed
+
+-- Is a singleton bean thread safe in Spring Framework?
+No. The singleton scoped beans are not thread-safe in Spring framework.
+
+--Explain the important life-cycle methods of a bean in Spring framework.
+There are 2 important bean lifecycle methods.
+The setup method called when the bean is loaded into the container.
+The teardown method which is invoked when the bean is unloaded from the container.
+
+--Explain inner beans in Spring framework?
+Inner beans are spring beans that are used as a property of another spring bean.
+
+--What are the limitations of autowiring in Spring framework?
+Overriding: You can still specify dependencies using and settings which will always override autowiring.
+Primitive data types: You cannot autowire simple properties such as primitives.
+
+--What is @Resource annotation in Spring framework?
+javax.annotation.@Resource annotation can be applied on fields or setter methods for 
+dependency injection and it follows by-name autowiring semantics, 
+name extracted from the name of the annotated setter/field or from the 'name' attribute. 
+The @Resource annotation takes a 'name' attribute which will be interpreted as the bean 
+name to be injected.
+
+--What kind of exception does spring DAO classes throw?
+The spring DAO class do not throw any specific exceptions such as SQLException instead it 
+throws exceptions that are subclasses of DataAccessException
+
+--Difference between @Resource and @Autowired in Spring framework.
+@autowired wires by bean type whereas @resource wires by name.
+Using @Qualifier along with the @Autowired functions exactly similar to the @Resource annotation.
+
+--Can a spring bean tag with no id or name attribute be created?
+Yes. Some spring beans are not required to be accessed by any other beans in the context file or by programmatically. So it does not require an id or name attribute as they are not referenced.
+
+--Difference between request and prototype bean scope in spring?
+Prototype scope creates a new instance everytime getBean method is invoked on the ApplicationContext. Whereas for request scope, only one instance is created for an HttpRequest.
+
+--Can I make a path variable optional?
+In spring MVC path variables are mandatory
+
+--Difference between spring singleton bean and the Gang of Four singleton pattern in Java.
+The Gang of Four defines Singleton as having only one instance per ClassLoader 
+whereas Spring singleton is defined as one instance of bean definition per container.
+
+-- What is the difference between @Autowired and @Inject ?
+
+-- What is the difference between 
+
+-- How to create two DB connections in Spring boot ?

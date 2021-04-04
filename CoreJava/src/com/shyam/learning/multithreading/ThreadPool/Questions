@@ -1,0 +1,26 @@
+Q)  Difference between Runnable and Callable ?
+-A Runnable object does not return a result whereas a Callable object returns a result.
+-A Runnable object cannot throw a checked exception wheras a Callable object can throw an exception
+-The Runnable interface has been around since Java 1.0 whereas Callable was only introduced in Java 1.5.
+-You can pass Runnable to create a Thread. But you can't create new Thread by passing Callable as parameter. 
+You can pass Callable only to ExecutorService instance
+-Use Runnable for fire and forget calls. Use Callable to verify the result.
+Similarities:
+Instances of the classes that implement Runnable or Callable interfaces are potentially executed by another thread.
+Instance of both Callable and Runnable interfaces can be executed by ExecutorService via submit() method.
+Both are functional interfaces and can be used in Lambda expressions since Java8.
+
+
+Q) Future vs Completable Future
+Futures:
+Futures were introduced in Java 5 (2004). They're basically placeholders for a result of an operation that 
+hasn't finished yet. Once the operation finishes, the Future will contain that result. 
+For example, an operation can be a Runnable or Callable instance that is submitted to an ExecutorService. 
+The submitter of the operation can use the Future object to check whether the operation isDone(), or wait for 
+it to finish using the blocking get() method.
+CompletableFutures:
+CompletableFutures were introduced in Java 8 (2014). They are in fact an evolution of regular Futures
+It carries an internal callback method. Once it is finished, the callback method will be triggered and 
+tell the thread that the downstream operation should be executed. That's why it has thenApply method to do further operation on the object wrapped in the CompletableFuture.
+
+

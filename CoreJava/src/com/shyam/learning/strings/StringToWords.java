@@ -14,7 +14,6 @@ public class StringToWords {
 	}
 
 	public static String[] stringToWords1(String str) {
-
 		int count = 0;
 		char[] charArr = str.toCharArray();
 		int length = charArr.length;
@@ -26,7 +25,6 @@ public class StringToWords {
 				}
 			}
 		}
-
 		String word = "\"";
 		int k = 0;
 		String[] words = new String[count + 1];
@@ -38,23 +36,19 @@ public class StringToWords {
 					k++;
 					word = "\"";
 				}
-
 			} else
 				word = word + charArr[i];
 		}
 		words[k] = word;
 		return words;
-
 	}
 
 	public static void stringToWords2(String str) {
-
 		StringTokenizer tokenizer = new StringTokenizer(str);
 		while (tokenizer.hasMoreTokens()) {
 			String word = tokenizer.nextToken();
 			System.out.println(word); // word you are looking in
 		}
-
 	}
 
 }

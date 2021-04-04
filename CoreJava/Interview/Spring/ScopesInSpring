@@ -1,0 +1,70 @@
+1. singleton(default*)
+Scopes a single bean definition to a single object instance per Spring IoC container.
+
+2. prototype
+Scopes a single bean definition to any number of object instances.
+It returns a new bean instance each time when requested. It does not store any cache version like singleton.
+Prototype scope = A new object is created each time it is injected/looked up. It will use new SomeBean() each time.
+
+3. request
+Scopes a single bean definition to the lifecycle of a single HTTP request; 
+that is each and every HTTP request will have its own instance of a bean created off the back of a single bean definition. 
+Only valid in the context of a web-aware Spring ApplicationContext.
+
+4. session
+Scopes a single bean definition to the lifecycle of a HTTP Session. 
+Only valid in the context of a web-aware Spring ApplicationContext.
+
+5. global session
+Scopes a single bean definition to the lifecycle of a global HTTP Session. 
+Typically only valid when used in a portlet context. 
+Only valid in the context of a web-aware Spring ApplicationContext.
+It is only valid in the context of a web-aware Spring ApplicationContext (Application level session).
+
+In most cases, you may only deal with the Spring’s core scope – singleton and prototype, 
+and the default scope is singleton.
+
+-Difference between Prototype scope and request scope ?
+
+Prototype scope creates a new instance every time getBean method is invoked on the ApplicationContext. 
+Whereas for request scope, only one instance is created for an HttpRequest.
+
+So in a HttpRequest, if the getBean method is called twice on Application 
+and there will be only one bean instantiated and reused, 
+whereas the bean scoped to Prototype in that same single HttpRequest would get 2 different instances.
+
+-- How to change the scope of a bean in spring ?
+@Component
+@Scope("prototype")
+public class BeanClass {
+}
+or 
+<bean id="beanId" class="com.howtodoinjava.BeanClass" scope="prototype" />
+
+
+- Life Cycle of a spring bean
+The Spring Bean Lifecycle
+1. Bean Definition
+Spring Bean will be defined using stereotype annotations or XML Bean configurations.
+2. Bean Creation and Instantiate
+As soon as bean created and It will be instantiated and loaded into ApplicationContext and JVM memory.
+3. Populating Bean properties
+Spring container will create a bean id, scope, default values based on the bean definition.
+4. Post-initialization
+Spring provides Aware interfaces to access application bean meta-data details and callback methods to hook into the bean life cycle to execute custom application-specific logic.
+5. Ready to Serve
+Now, Bean is created and injected all the dependencies and should be executed all the Aware and callback methods implementation. Bean is ready to serve.
+6. Pre-destroy
+Spring provides callback methods to execute custom application-specific logic and clean-ups before destroying a bean from ApplicationContext.
+7. Bean Destroyed
+Bean will be removed or destroyed from and JVM memory
+
+
+-Q Difference between a java class and a Bean
+A bean is a java class but a java class need not to be a bean
+A java bean is a java class that should have the following conventions
+	- It should have default constructor
+	- It should be serializable
+	- It should have the getter and setters
+	
+	

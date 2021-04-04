@@ -1,0 +1,30 @@
+Architecture: https://www.javainuse.com/webseries/spring-security-jwt/chap3
+
+--In the JWT auth process, the front end (client) firstly sends some credentials to 
+authenticate itself (username and password in our case, since we're working on a web 
+application). The server (the Spring app in our case) then checks those credentials, 
+and if they are valid, it generates a JWT and returns it	
+
+JWT (JSON Web Tokens)- It is just a token format. JWT tokens are JSON encoded data structures 
+contains information about issuer, subject (claims), expiration time etc. 
+It is signed for tamper proof and authenticity and it can be encrypted to protect the 
+token information using symmetric or asymmetric approach. 
+JWT is simpler than SAML 1.1/2.0 and supported by all devices and it is more powerful 
+than SWT(Simple Web Token).
+
+OAuth2 - OAuth2 solve a problem that user wants to access the data using client software 
+like browse based web apps, native mobile apps or desktop apps. OAuth2 is just for 
+authorization, client software can be authorized to access the resources on-behalf 
+of end user using access token.
+
+- JWT token consists of three parts
+Header, Payload Body, Signature
+Header part of defines which of the algorithm needs to be used to encode or decode the JWT token
+Body would contain all the values that is used to pass the information
+Signature would be created based on the server authentication
+JWT tokens are useful when there are multiple micro services and each request has to be authenticated
+
+-- 
+
+
+

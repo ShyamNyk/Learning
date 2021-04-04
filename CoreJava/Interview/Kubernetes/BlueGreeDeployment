@@ -1,0 +1,17 @@
+The gist of blue-green deployments is to have two identical environments, 
+conventionally called blue and green, to do continuous, risk-free updates. 
+This way, users access one while the other receives updates.
+
+Blue and green take turns. On each cycle, we deploy new versions into the idle environment, test them, and finally switch routes so all users can start using it. With this method, we get three benefits:
+
+We test in a real production environment.
+Users don’t experience any downtime.
+We can rollback in an instant in case there is trouble
+
+Here is where Kubernetes enters the picture. Kubernetes is an orchestration platform 
+that’s perfect for blue-green deployments. We can, for instance, use the platform 
+to dynamically create the green environment, deploy the application, 
+switch over the user’s traffic, and finally delete the blue environment. 
+Kubernetes lets us manage the whole blue-green process using one tool.
+
+https://semaphoreci.com/blog/continuous-blue-green-deployments-with-kubernetes

@@ -1,0 +1,451 @@
+Java:
+1. Hashmap and Hashset implementation  - done
+
+
+2. HashMap vs LinkedHashMap  - done
+In the LinkedHashMap implementation, the LinkedHashMap.Entry class extends the HashMap.Entry class, by adding before and after fields. These fields are used to assemble the LinkedHashMap.Entry objects into an independent doubly-linked list that records the insertion order. So, in the LinkedHashMap class, the entry objects are in two distinct chains:
+a singly linked hash chain that is accessed via the main hash array, and
+a separate doubly linked list of all entries that is kept in entry insertion order
+
+3. Default methods and diamond problem  - done
+4. Comparing 2 objects , hashcode and equals  - done
+5. Executors
+The Executor framework is an abstraction layer over the actual implementation of java multithreading
+Executor implementation in java uses thread pools which consists of worker threads. The entire management of worker threads is handled by the framework. So the overhead in memory management is much reduced compared to earlier multithreading approaches
+multithreading applications were created using thread group, thread pool or custom thread pool. As a result the entire thread management was the responsibility of the programmer keeping in mind the following points.
+
+Thread synchronization
+Thread waiting
+Thread joining
+Thread locking
+Thread notification
+Handling dead lock
+
+-Create an executor
+-Create one or more tasks and put in the queue
+-Submit the task to the Executor
+-Execute the task
+-Shutdown the Executor
+ExecutorService executor = Executors.newFixedThreadPool(2);  Executors.newSingleThreadExecutor();= Executors.newCachedThreadPool()
+
+
+6. Exception handling  -- done
+@ControllerAdvice
+@RestController
+public class GenericExceptionHandler extends ResponseEntityExceptionHandler {
+	public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
+7. Custom exceptions  - done		
+
+1. bean scopes  - done
+
+Spring:
+Spring AOP uses either JDK dynamic proxies or CGLIB to create the proxies for your target objects.
+According to Spring documentation, in case your target implements at least one interface, a JDK dynamic proxy will be used. However if your target object does not implement any interfaces then a CGLIB proxy will be created.
+
+Proxy: It is an object that is created after applying advice to a target object is called proxy. The Spring AOP implements the JDK dynamic proxy to create the proxy classes with target classes and advice invocations. These are called AOP proxy classes.
+
+2. AOP  - done , whatis AOP proxy ?
+@Before – Run before the method execution
+@After – Run after the method returned a result
+@AfterReturning – Run after the method returned a result, intercept the returned result as well.
+@AfterThrowing – Run after the method throws an exception
+@Around – Run around the method execution, combine all three advices above
+@Pointcut(value="execution(* com.shyam.aop.*.*.*(..) )")
+	public void myPointcut()
+	@Around("myPointcut()")
+	public Object applicationLogger(ProceedingJoinPoint pjp) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		String methodName = pjp.getSignature().getName();
+		String className = pjp.getTarget().getClass().toString();
+		Object[] array = pjp.getArgs();
+	
+-3. exception handling 
+The @ControllerAdvice is an annotation, to handle the exceptions globally.
+
+@ControllerAdvice
+public class ProductExceptionController {
+   @ExceptionHandler(value = ProductNotfoundException.class)
+   public ResponseEntity<Object> exception(ProductNotfoundException exception) {
+      return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
+   }
+// In stead of "Product not found" string, we can return a 	Exception Response class
+public class ProductNotfoundException extends RuntimeException {
+   private static final long serialVersionUID = 1L;
+
+
+
+SQl DB:
+1. Basic queries 
+2. Triggers 
+A trigger is a stored procedure in database which automatically invokes whenever a special event in the database occurs. For example, a trigger can be invoked when a row is inserted into a specified table or when certain table columns are being updated.
+Stored Procedures are created to perform one or more DML operations on Database. It is nothing but the group of SQL statements that accepts some input in the form of parameters and performs some task and may or may not returns a value.
+3. SQL injection 
+SQL injection is one of the most common web hacking techniques
+SQL injection is the placement of malicious code in SQL statements, via web page input.
+It usually happens in case of Dynamic query creation
+
+
+REST
+1. PUT and POST 
+
+PUT method is idempotent whereas POST method is not idempotent.
+POST to create a resource , PUT to update the resource.
+
+2. PUT and PATCH 
+3. 401 vs 403 
+401 Unauthorized
+403 Forbidden
+
+1×× Informational
+100 Continue
+101 Switching Protocols
+102 Processing
+
+2×× Success
+200 OK
+201 Created
+202 Accepted
+
+3×× Redirection
+300 Multiple Choices
+301 Moved Permanently
+302 Found
+303 See Other
+
+4×× Client Error
+400 Bad Request
+401 Unauthorized
+402 Payment Required
+403 Forbidden
+404 Not Found
+405 Method Not Allowed
+
+5×× Server Error
+500 Internal Server Error
+501 Not Implemented
+502 Bad Gateway
+503 Service Unavailable
+504 Gateway Timeout
+
+4. Security 
+5. Contenttype vs accept headers 
+-- Accept Header tells the API that it is expecting the response in the specified media type e.g. application/json or application/xml.
+Accept: application/json
+--Content-Type tells the API about the media type of the request being sent in the request body e.g. application/json.
+Content-Type: application/json
+6. OAuth/SAML 
+SAML (Security Assertion Mark-up Language) is an umbrella standard that covers federation, identity management and single sign-on (SSO). In contrast, the OAuth (Open Authorisation) is a standard for, colour me not surprised, authorisation of resources. Unlike SAML, it doesn’t deal with authentication
+
+------Open Id Connect: Open ID connect is an open standard that organisations use to authenticate users. IDps(Identiy providers) use this so that users can sign into to the IDp and then accesses other apps without having to login of share their sign in information. Example is gmail, youtibe, google
+
+------SAML: It is more likely used in the coorporate enviroment.It enables you to log in to your corporate intranet of Idp and then access numerous additional services witout having to reenter your credentials. SAML is an exchange based standard for exchanging authentication and authorization data between Idps and Service Providers to verify users identity and permissions, then grant or deny acceess to the services. It is XML based. It is used for both authentication and authorization. SSO for enterprise apps.
+It supports XML, HTTP, SOAP and any othe protocol that can transport XML
+
+-------OAth 2.0: This helps to access resources from a server on behalf of the user, without having them to share the credentials.It does this by allowing the identity provider to issue tokens to the third party applications with the user's approval. It is JSON based.
+It is used for Authorization only. Used for API authorization . It supports HTTP protocol
+
+What is JWT refresh token ?
+Refresh tokens are the credentials that can be used to acquire new access tokens.
+The lifetime of a refresh token is much longer compared to the lifetime of an access token.
+Refresh tokens can also expire but are quiet long-lived.
+When current access tokens expire or become invalid, the authorization server provides refresh tokens to the client to obtain new access token.
+
+Generally I will focus on Famework level questions , Object oriented design questions. and CI/CD related questions based on their current project. I don't have specific questions. Its should be like first level interview with questions based on their project architecture.
+Custom Functional Interface - done
+consumer, supplir, predicate - done
+Implementing sample queue system with Queue DS - done
+Multi threading questions how to implement DAG work flow
+a DAG – or a Directed Acyclic Graph – is a collection of all the tasks you want to run, organized in a way that reflects their relationships and dependencies.
+
+architectural pattern
+desing micro services and different pattern
+---------------------------------------------
+You have applied the Database per Service pattern. Each service has its own database. Some business transactions, however, span multiple service so you need a mechanism to implement transactions that span services. For example, let’s imagine that you are building an e-commerce store where customers have a credit limit. The application must ensure that a new order will not exceed the customer’s credit limit. Since Orders and Customers are in different databases owned by different services the application cannot simply use a local ACID transaction.
+Implement each business transaction that spans multiple services is a saga. A saga is a sequence of local transactions. Each local transaction updates the database and publishes a message or event to trigger the next local transaction in the saga. If a local transaction fails because it violates a business rule then the saga executes a series of compensating transactions that undo the changes that were made by the preceding local transactions.
+There are two ways of coordination sagas:
+
+Choreography - each local transaction publishes domain events that trigger local transactions in other services
+Orchestration - an orchestrator (object) tells the participants what local transactions to execute
+
+This pattern has the following benefits:
+It enables an application to maintain data consistency across multiple services without using distributed transactions
+
+
+
+
+
+
+What’s SAML and when should I use it?
+SAML, Security Assertion Markup Language, is an open standard data format for exchanging authentication and authorization data between Identity Providers and service providers. It’s a security protocol similar to OpenId, OAuth, Kerberos etc. One of the main use cases SAML addresses is Single-Sign-On (SSO) across services, to offer a simple login experience through a single service.
+
+This method provides great value for both the user and the company.
+
+Users don’t have to deal with remembering passwords for various applications, while still providing the services the information they need.
+Companies can have a process to identify internal users easily, providing them with the needed data.
+Also, in the case an employee leaves a company, it’s easier to revoke one main account without having to go through and search for multiple accounts for each service this user has had access to.
+
+http://www.cs.ucf.edu/~dmarino/progcontests/mysols/collegeother/naq/2014/narrowartgallery.java
+https://github.com/dakoval/Kattis-Solutions/blob/master/everywhere.java
+https://github.com/PedroContipelli/Kattis/blob/master/heliocentric.java
+Singleton, Decorator, template 
+array whose sum is equal to ‘sum’
+
+The Hibernate lifecycle contains the following states:-
+Transient state  - 
+Persistent state 
+Detached state   
+
+Session session = factory.openSession();
+SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+Session session = sessionFactory.openSession();
+Transaction tx = session.beginTransaction();
+In hibernate, get() and load() are two methods which is used to fetch data for the given identifier. They both belong to Hibernate session class
+session.get()-It object not found for the given identifier then it will return null object,	
+If you are not sure that object exist then use get() method  
+session.load()-It will throw object not found exception ,If you are sure that object exist then use load() method 
+ 
+
+
+Q) How to creare war file in spring boot ? - done	
+<packaging>war</packaging>
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-tomcat</artifactId>
+   <scope>provided</scope>
+</dependency>
+Finally, we initialize the Servlet context required by Tomcat by implementing the SpringBootServletInitializer interface:
+@SpringBootApplication
+public class SpringBootTomcatApplication extends SpringBootServletInitializer {
+}
+
+Q) Tigger on event 
+https://www.sqlshack.com/creating-smart-trigger-based-audit-trail-sql-server/
+Q) Completable feature
+
+
+Q) How to secure Rest API end points ?
+Secure REST APIs should only provide HTTPS endpoints to ensure that all API communication is encrypted using SSL/TLS. This allows clients to authenticate the service and protects the API credentials and transmitted data.
+
+HTTP Basic Authentication: Credentials are sent directly in HTTP headers in Base64 encoding without encryption. This is the simplest authentication method and the easiest to implement. It also the least secure, since confidential data is transmitted as plain text, so it should only be used in combination with HTTPS.
+JSON Web Tokens (JWT): Credentials and other access parameters are sent as JSON data structures. These access tokens can be signed cryptographically and are the preferred way of controlling access to REST APIs. See the OWASP JWT Cheat Sheet for a quick overview of JSON Web Tokens, and RFC 7519 for the full specification.
+OAuth: Standard OAuth 2.0 mechanisms can be used for authentication and authorization. OpenID Connect allows secure authentication over OAuth 2.0. For example, Google’s APIs use OAuth 2.0 for authentication and authorization.
+
+Q) Spring custom validation
+@interface to define our annotation:
+@Documented
+@Constraint(validatedBy = ContactNumberValidator.class)
+@Target( { ElementType.METHOD, ElementType.FIELD })
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ContactNumberConstraint {
+    String message() default "Invalid phone number";
+    Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
+}
+
+Q) Cacheable in spring boot
+Hibernate has 2 levels of cache. 1. First level 2. Second level
+Second level chache is for the whole application and first level cache is for the current hibernate session. There is no cache available per user basis.
+So, the Hibernate caching mechanism is to bypass the database and reduce load on the DB side while the Spring caching mechanism can bypass the data access layer as well and it’s not related to caching results from the DB.
+
+@EnableCaching
+It enables Spring’s annotation-driven cache management capability. In spring boot project, we need to add it to the boot application class annotated with @SpringBootApplication. Spring provides one concurrent hashmap as default cache, but we can override CacheManager to register external cache providers as well easily.
+@Cacheable(value="books", key="#id")
+It is used on the method level to let spring know that the response of the method are cacheable
+@CachePut
+@CacheEvict
+@Caching
+ ttl , eviction policy; given by the cache provider as spring provides only the abstraction , not the implementation
+spring.cache.ehcache.provider=net.sf.ehcache.CacheManager  
+spring.cache.ehcache.config=classpath:config/another-config.xml  
+spring.cache.cache-names=cacheA, cacheB  
+spring.cache.redis.time-to-live=100000  
+# Redis Config
+spring.cache.type=redis
+spring.redis.host=localhost
+spring.redis.port=6379
+
+1. What is starter template?
+Spring Boot starters are templates that contain a collection of all the relevant transitive dependencies that are needed to start a particular functionality
+It leaves the chances of version conflict which ultimately result in more runtime exceptions.
+
+Q) Configuring two DB
+@Configuration
+@PropertySource({"classpath:persistence-multiple-db-boot.properties"})
+@EnableJpaRepositories(
+  basePackages = "com.baeldung.multipledb.dao.user",
+  entityManagerFactoryRef = "userEntityManager",
+  transactionManagerRef = "userTransactionManager")
+  
+Transaction Managament:
+-------------------------------------------------
+Spring Boot implicitly creates a proxy for the transaction annotated methods. So for such methods the proxy acts like a wrapper which takes care of creating a transaction at the beginning of the method call and committing the transaction after the method is executed.
+
+Internal representation of a Transaction
+---------------------------------
+import java.sql.Connection;
+Connection connection = dataSource.getConnection(); // (1)
+try (connection) {
+    connection.setAutoCommit(false); // (2)
+    // execute some SQL statements...
+    connection.commit(); // (3)
+
+} catch (SQLException e) {
+    connection.rollback(); // (4)
+}
+
+How to use
+----------------
+- Create a @Configuration class to enable transactional support - But for spring boot project, this is not requred
+@Configuration
+@EnableTransactionManagement
+public class PersistenceJPAConfig{
+   @Bean
+   public PlatformTransactionManager transactionManager(){
+      JpaTransactionManager transactionManager
+        = new JpaTransactionManager();
+      transactionManager.setEntityManagerFactory(
+        entityManagerFactoryBean().getObject() );
+      return transactionManager;
+   }
+}
+
+- Use Trnsactional annotation at method level or class level
+only public methods should be annotated with @Transactional. Methods of any other visibilities will simply ignore the annotation silently as these are not proxied.
+
+The annotation supports further configuration as well:
+
+the Propagation Type of the transaction
+the Isolation Level of the transaction
+a Timeout for the operation wrapped by the transaction
+a readOnly flag – a hint for the persistence provider that the transaction should be read only
+the Rollback rules for the transaction
+Note that by default, rollback happens for runtime, unchecked exceptions only. The checked exception does not trigger a rollback of the transaction. We can, of course, configure this behavior with the rollbackFor and noRollbackFor annotation parameters.
+
+https://www.javainuse.com/spring/boot-transaction-propagation
+
+
+--------------------------What is Transaction Propagation?
+Any application involves a number of services or components making a call to other services or components. Transaction Propagation indicates if any component or service will or will not participate in transaction and how will it behave if the calling calling component/service already has or does not have a transaction created already.
+There are six types of Transaction Propagations-
+
+-REQUIRED - Default Transaction Propagation -Always executes in a transaction. If there is any existing transaction it uses it. If none exists then only a new one is created → getConnection(). setAutocommit(false). commit().
+-SUPPORTS - @Transactional(propagation=Propagation.SUPPORTS) - t may or may not run in a transaction. If current transaction exists then it is supported. If none exists then gets executed with out transaction.
+-NOT_SUPPORTED - Always executes without a transaction. If there is any existing transaction it gets suspended → nothing to do with JDBC
+REQUIRES_NEW - Always executes in a new transaction. If there is any existing transaction it gets suspended → getConnection(). setAutocommit(false). commit().
+NEVER -Always executes with out any transaction. It throws an exception if there is an existing transaction
+MANDATORY - Always executes in a transaction. If there is any existing transaction it is used. If there is no existing transaction it will throw an exception.
+Popular Posts
+
+-----------------------What is Transaction Isolation?
+Transaction Isolation defines the database state when two transactions concurrently act on the same database entity. It involves locking of database records. So it describes the behaviour or state of the database when one transaction is working on database entity and then some other concurrent transaction tries to simultaneously access/edit the same database entity.
+Transaction isolation level is not something specific to Spring Framework. Using Spring we can change the isolation level to suit our business logic.
+
+SERIALIZABLE - If two transactions are executing concurrently then it is as if the transactions get executed serially i.e the first transaction gets committed only then the second transaction gets executed. This is total isolation. So a running transaction is never affected by other transactions. However this may cause issues as performance will be low and deadlock might occur.
+
+REPEATABLE_READ - till the first transaction is committed the existing records cannot be changed by second transaction but new records can be added.
+
+READ_COMMITTED
+READ_UNCOMMITTED
+
+-------------------Transaction Rool Back
+For an application transaction if any action fails then all other actions gets rolled back. Previous Transaction Management Example we had tested the rollback by throwing an unchecked exception.
+However in real time scenarios it is the checked exception that gets thrown. These are business exceptions based on some logic
+So how will our transactions behave in case of Checked Exceptions? In case of checked exceptions the previously executed transactions do not get rolled back automatically even if we have used transaction annotation. We need to inform the application how to handle roll back in event of checked exception. This is achieved using the RollbackFor annotation.
+
+@OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
+@JoinColumn(name = "cp_fk", referencedColumnName = "id")
+ One-to-Many relationships load lazily by default.
+ There are multiple types of cascading operations: PERSIST, MERGE, REMOVE, REFRESH, DETACH, and ALL (that combines all the previous ones).
+ 
+ @ManyToMany
+@JoinTable(
+  name = "STUDENTS_COURSES",
+  joinColumns = @JoinColumn(name = "COURSE_ID", referencedColumnName = "ID"),
+  inverseJoinColumns = @JoinColumn(name = "STUDENT_ID", referencedColumnName = "ID")
+)
+private List<Student> students;
+@NotNull
+@Size(max = 100)
+
+
+Oath2.0 protocol
+----------------------------------
+OAuth2.0 is an open authorization protocol, which allows accessing the resources of the resource owner by enabling the client applications on HTTP services such as Facebook, GitHub, etc. It allows sharing of resources stored on one site to another site without using their credentials
+
+------------------Why Use OAuth 2.0?
+You can use OAuth 2.0 to read data of a user from another application.
+It supplies the authorization workflow for web, desktop applications, and mobile devices.
+It is a server side web app that uses authorization code and does not interact with user credentials.
+
+It accesses the data using tokens instead of using their credentials
+maven dependency : cloud security, cloud oath2
+@EnableOath2So
+
+- User choose sign up using GitHub
+- User need to login to Github for Authentication
+- Page will redirect to Github Authorization
+- Once the user is authorized, the git hub will generate one access token and return back to the client
+- Client will send request with the same access token provided by Github
+- GitHub resource server will decode the token and validate it
+- It it is valid token then client can recive user information from GitHub resource server
+
+Access token: We use refresh token when the access token is expired in order to produce the new access toen.
+
+
+
+@Interceptors:
+------------------------
+preHandle() method
+postHandle() method 
+afterCompletion() method
+
+
+Strangler Design Pattern:
+------------------------------------------------------
+Follow three steps: Transform, Coexist, and Eliminate
+You can develop a new component, let both the new and the old component exist for a period of time, and finally terminate the old component.
+- Start with simple component
+- If there is a component which has good test coverage and less technical debt associated with it, starting with this component can give  teams a lot of confidence during the migration process
+- If there are components which are better suited for the cloud and have scalability requirements, then start with one of those components.
+- If there is a component which has frequent business requirements and hence needs to be deployed a lot more regularly, you can start with that component
+
+
+
+Technical questions , Scenario based and Design questions
+Generally I will focus on Famework level questions , Object oriented design questions. and CI/CD related questions based on their current project. I don't have specific questions. Its should be like first level interview with questions based on their project architecture.
+creating custom functional interfaces - done 
+predicates and consumers - done
+Implementing sample queue system with Queue interface  - done
+Implemt blocking queue - done
+Multithreading questions like how to implement DAG workflow
+Based on their project , some questions on architectural patterns. If they have experience in Microservices then questions related design microservices and different patterns
+
+Consumer:
+Consumer consumer = (t) -> System.out.println("Printing : " + t);
+// stream forEach method always accepts the consumer functional interface
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+// list.stream().forEach(consumer);
+// instead of passing the consumer reference, we can pass the lambda expression directly
+list.stream().forEach((t) -> System.out.println("Printing : " + t));
+
+Predicate:
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+list.stream().filter((t) -> t % 2 == 0).forEach((t) -> System.out.println("Print even : " + t));
+System.out.println("Print Odd");
+list.stream().filter(p -> p % 2 != 0).forEach(p -> System.out.println("Odd : " + p));
+
+Supplier: Takes no input but output is expected
+System.out.println(list.stream().findAny().orElseGet(()->"nothing found"));
+
+// Reduce is used to perform the aggregate function
+Integer sumResult = Stream.of(2,4,69,1,3,7).reduce(0,(a,b)->a+b);
+
+
+
+
+
+
+
+
+	
+

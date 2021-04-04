@@ -1,0 +1,19 @@
+extends layout
+
+block content
+	if !user
+		a('href'='login') Click here to log in
+	else
+		a('href'='logout') Click here to log out
+	h2= title
+	p This app uses SAML to authenticate users from another security domain.
+	if user
+		p Name ID from SAML Response: #{user.nameID}
+		table
+			tr
+				th Attribute Name
+				th Attribute Value
+				each profileAttribute in Object.keys(user)
+					tr
+						td= profileAttribute
+						td= user[profileAttribute]

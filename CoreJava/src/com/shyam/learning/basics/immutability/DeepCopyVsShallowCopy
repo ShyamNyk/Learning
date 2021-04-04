@@ -1,0 +1,26 @@
+Shallow Copy
+---------------
+--Whenever we use default implementation of clone method we get shallow copy of object 
+means it creates new instance and copies all the field of object to that new instance and
+returns it as object type, we need to explicitly cast it back to our original object. 
+This is shallow copy of the object.
+--clone() method of the object class support shallow copy of the object. If the object 
+contains primitive as well as nonprimitive or reference type variable 
+in shallow copy, the cloned object also refers to the same object to which the original 
+object refers as only the object references gets copied and not the referred objects themselves.
+That’s why the name shallow copy or shallow cloning in Java. 
+--If only primitive type fields or Immutable objects are there then there is no difference between shallow and deep copy in Java.
+
+
+Deep Copy
+
+Whenever we need own copy not to use default implementation we call it as deep copy, whenever we need deep copy of the object we need to implement according to our need.
+So for deep copy we need to ensure all the member class also implement the Cloneable interface and override the clone() method of the object class.
+A deep copy means actually creating a new array and copying over the values.
+
+when to use what
+There is no hard and fast rule defined for selecting between shallow copy and deep copy but normally we should keep in mind that if an object has only primitive fields, then obviously we should go for shallow copy, but if the object has references to other objects, then based on the requirement, shallow copy or deep copy should be done. If the references are not updated then there is no point to initiate a deep copy.
+
+Lazy Copy
+A lazy copy can be defined as a combination of both shallow copy and deep copy. The mechanism follows a simple approach – at the initial state, shallow copy approach is used. A counter is also used to keep a track on how many objects share the data. When the program wants to modify the original object, it checks whether the object is shared or not. If the object is shared, then the deep copy mechanism is initiated.
+ 

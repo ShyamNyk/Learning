@@ -1,0 +1,53 @@
+1)What is indexing in DB and how does it affect ?
+https://stackoverflow.com/questions/1108/how-does-database-indexing-work
+https://www.geeksforgeeks.org/indexing-in-databases-set-1/
+
+2) What is the difference between where and having cluase?
+
+3) What is the difference between delete and truncate ?
+
+4) What is the difference between Primary key and unique key,  Primary key and foreign key ?
+
+5)what is the difference between procedure and function ?
+
+6) What is veiw ?
+
+7) Can we create index on view ?
+
+8) What is a cursor and what is it's alternative ?
+
+9) How to find the 10nth largest salary in a table ?
+Nth larget salary : SELECT Salary FROM EmployeePosition E1 WHERE N-1 = ( SELECT COUNT( DISTINCT ( E2.Salary ) ) FROM EmployeePosition E2 WHERE E2.Salary >  E1.Salary );
+Two maximum salaries: SELECT DISTINCT Salary FROM EmployeePosition E1 WHERE 2 >= (SELECTCOUNT(DISTINCT Salary) FROM EmployeePosition E2 WHERE E1.Salary <= E2.Salary) ORDER BY E1.Salary DESC;
+Two minimum salaries: SELECT DISTINCT Salary FROM EmployeePosition E1 WHERE 2 >= (SELECTCOUNT(DISTINCT Salary) FROM EmployeePosition E2 WHERE E1.Salary >= E2.Salary) ORDER BY E1.Salary DESC;
+
+10) Find duplicate elements in a table
+SELECT EmpID, EmpFname, Department, COUNT(*) 
+FROM EmployeeInfo GROUP BY EmpID, EmpFname, Department 
+having COUNT(*) > 1;
+
+11) What is a trigger ?
+A trigger is a stored procedure in database which automatically invokes whenever a special event in the database occurs. For example, a trigger can be invoked when a row is inserted into a specified table or when certain table columns are being updated
+create trigger stud_marks 
+before INSERT 
+on 
+Student 
+for each row 
+set Student.total = Student.subj1 + Student.subj2 + Student.subj3, Student.per = Student.total * 60 / 100;
+
+12)Stored Procedures are created to perform one or more DML operations on Database. It is nothing but the group of SQL statements that accepts some input in the form of parameters and performs some task and may or may not returns a value.
+
+
+14) ON DELETE CASCADE clause in MySQL is used to automatically remove the matching records from the child table when we delete the rows from the parent table. It is a kind of referential action related to the foreign key.
+CREATE TABLE Payment (  
+  payment_id int(10) PRIMARY KEY NOT NULL,  
+  emp_id int(10) NOT NULL,  
+  amount float NOT NULL,  
+  payment_date date NOT NULL,  
+  FOREIGN KEY (emp_id) REFERENCES Employee (emp_id) ON DELETE CASCADE  
+); 
+
+15)
+
+
+

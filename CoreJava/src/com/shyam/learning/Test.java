@@ -1,29 +1,49 @@
 package com.shyam.learning;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Test {
 
-
-class Test {
 	public static void main(String args[]) {
-		//new Test() == new Test();
-		System.out.println(new Car().equals(new Car()));
-		List list = new ArrayList<Integer>();
-		list.add(2);
-		list.add(3);
-		System.out.println(list.size());
-		clearList(list);
-		list=null;
-		System.out.println(list.size());
+		int num = 5;
+
+		if (checkIfPrime(num)) {
+			System.out.println(num + " Prime Number");
+		} else {
+			System.out.println(num + " Not a Prime Number");
+		}
+		
+		System.out.println();
+		
+		printFirstNPrimeNumbers(10);
+
+	}
+
+	private static void printFirstNPrimeNumbers(int n) {
+		
+		int count = 0;
+		int i=0;
+		
+		while (count < n) {
+			
+			if (checkIfPrime(i)) {
+				System.out.println(i);
+				count++;
+			}
+			i++;
+		}
+		
 		
 	}
 
-
-	static void clearList(List list){
-		list.add(3);
-	list = null;
-	}}
-
-/*
- * class Car{ private int model = 5; }
- */
+	private static boolean checkIfPrime(int num) {
+		boolean status = true;
+		for (int i = num / 2; i > 1; i--) {
+			if (num % i == 0) {
+				status = false;
+				return status;
+			}
+		}
+		return status;
+	}
+	
+	
+}

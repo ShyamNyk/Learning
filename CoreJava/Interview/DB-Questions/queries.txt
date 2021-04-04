@@ -1,0 +1,31 @@
+Q) Write a SQL query to display the current date?
+======================================================
+-SELECT CURDATE();
+   
+Q) How to find the 10nth largest salary in a table ?
+======================================================
+
+-Using Limit: it works in Mysql
+SELECT salary FROM Employee ORDER BY Salary DESC LIMIT n-1,1
+
+-Using Top: it does not work in Mysql
+SELECT TOP 1 salary FROM ( SELECT DISTINCT TOP N salary FROM #Employee ORDER BY salary DESC ) AS temp ORDER BY salary
+
+-Using row_num: It works only in Oracle
+
+Corelated nested query/self join:
+Nth larget salary : SELECT Salary FROM EmployeePosition E1 WHERE N-1 = ( SELECT COUNT( DISTINCT ( E2.Salary ) ) FROM EmployeePosition E2 WHERE E2.Salary >  E1.Salary );
+https://www.youtube.com/watch?v=fh4yBn0oTaM
+
+Q)How to find top three highest salary in emp table in oracle?
+===============================================================
+SELECT  * FROM (SELECT * FROM emp  ORDER BY Salary desc ) 
+WHERE rownum <= 3 ORDER BY Salary ;
+
+
+Q) Find duplicate elements in a table
+======================================================
+
+SELECT EmpID, EmpFname, Department, COUNT(*) FROM EmployeeInfo GROUP BY EmpID, EmpFname, Department having COUNT(*) > 1;
+
+Q)

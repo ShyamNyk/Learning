@@ -20,7 +20,6 @@ public class SingleTone5 {
 					// if instance is null, initialize
 					obj = new SingleTone5();
 				}
-
 			}
 		}
 		return obj;

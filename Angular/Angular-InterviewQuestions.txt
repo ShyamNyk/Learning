@@ -1,0 +1,6 @@
+1) Life cycle of angular component
+2) Difference between string interpolation and Property binding
+	PropertyBinding: <button [disabled]='isDisabled'>Try Me</button> - used dynamically
+	String interpolation: {{variable}} 
+3)Property Binding uses square brackets []
+  Event binding uses parenthesis ()

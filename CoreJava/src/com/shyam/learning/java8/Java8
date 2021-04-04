@@ -1,0 +1,75 @@
+---Q: What does it mean by Java8 supports Functional Programming?
+A:Before Java 8 everything was mostly object oriented. Except primitives everything in java existed as objects
+All calls to methods/functions are to be made using objects or class references.
+Methods/Functions did not exist independently by itself.
+With Java 8, functional programming has been introduced. 
+So we can make use of anonymous functions. Java is a first-class object-oriented language.
+With the exception of primitive data types, everything in Java is an object. Even an array is an Object. 
+Every class creates instances that are objects. 
+There is no way of defining just a function / method which stays in Java all by itself. 
+There is no way of passing a method as argument or returning a method body for that instance.
+
+--Q: What is MetaSpace in Java8? How does it differ from PermGen Space?
+A: With JDK8, the permGen Space has been removed. So where will the metadata information be stored now? 
+This metadata is now stored in a native memory are called as "MetaSpace". 
+This memory is not a contiguous Java Heap memory. 
+It allows for improvements over PermGen space in Garbage collection, auto tuning, 
+concurrent de-allocation of metadata.
+
+--Q: What are advantages of lambda expression ?
+A: Advantages of Lambda functions
+Until Java 8 lists and sets were typically processed by client code obtaining an iterator from the collection, then using that to iterate over its elements and process each in turn. If the processing of different elements is to proceed in parallel, it was the responsibility of the client code, not the collection, to organise this.
+Java 8 makes it easier to distribute processing of collections over multiple threads.
+Collections can now organise their own iteration internally, transferring responsibility for parallelisation from client code into library code.
+Fewer lines of code. As explained above the user has to only declare what is to be done in a declarative way.
+n -> System.out.println("Hello World " + n);
+So user has to type reduced amount of code.
+Using Java 8 Lambda expressions higher efficiency can be achieved. Using CPUs with multicores, user can take advantage of the multicore CPUs by parallel processing of collections using lambda.
+
+--Q: Explain Java 8-Internal vs. External Iteration?
+External Iterators- 
+This Iterator is also known as active iterator or explicit iterator. For this type of iterator the control over iteration of elements is with the programmer. Which means that the programmer define when and how the next element of iteration is called.
+//Traditional java for-each iterator which is an External Iterator.
+		for (String item : items) {
+			System.out.println(item);
+		}
+Internal Iterators- This Iterator is also known as passive iterator, implicit iterator or callback iterator. For this type of iterator the control over the iteration of elements lies with the iterator itself. The programmer only tells the iterator "What operation is to be performed on the elements of the collection". Thus the programmer only declares what is to be done and does not manage and control how the iteration of individual elements take place.
+	//iterate over list items
+		//Java 8 forEach iterator which is an Internal Iterator.
+		items.forEach(item -> System.out.println(item));
+		
+--Q: Explain Java 8-Intermediate operations vs. Terminal operations?
+A: Stream operations can be divided in two parts-
+Intermediate operations- Intermediate operations which return another Stream which allows operations to be connected in a form of a query
+Terminal operations- Terminal operations produces a non-stream, result such as primitive value, a collection or no value at all.
+
+--Q: What is :: (double colon) operator-Method References in Java 8?
+A: Usually we use lambda expressions to create anonymous methods which return us the desired output. 
+But sometimes lambda expressions do nothing but call an existing method. 
+Because this lambda expression calls an existing method, method reference can be used here instead of Lambda function. 
+Method reference is described using :: (double colon) symbol.
+
+	List<String> myList = Arrays.asList("a1", "a2", "b1", "c2", "c1");
+		System.out.println("-------Using Lambda Functions--------");
+		
+		//Using Lambda function to call system.out.println()
+		myList.stream().map(s -> s.toUpperCase())
+				.forEach(s -> System.out.println(s));
+
+		System.out.println("-------Using Method Reference--------");
+
+
+		 //Using Method reference to call system.out.println()
+		myList.stream().map(String::toUpperCase).sorted()
+				.forEach(System.out::println);
+
+
+--Q: What is Optional in Java 8?
+A: Java 8 introduced a new container class java.util.Optional<T>. 
+It wraps a single value, if that value is available. 
+If the value is not available an empty optional should be returned. 
+Thus it represents null value with absent value. 
+This class has various utility methods like isPresent() which helps users to avoid making use of null value checks. 
+So instead of returning the value directly, a wrapper object is returned thus users can avoid the null pointer exception.
+
+--Q:

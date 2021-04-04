@@ -7,11 +7,13 @@ public class SingleTone1 {
 	// public instance initialized when loading the class
 	public static SingleTone1 obj = new SingleTone1();
 
+	// private constructor to force use of
+    // getInstance() to create Singleton object
 	private SingleTone1() {
 		// private constructor
 	}
 
-	public SingleTone1 getInstance() {
+	public static SingleTone1 getInstance() {
 		return obj;
 	}
 }

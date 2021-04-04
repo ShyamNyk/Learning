@@ -1,0 +1,9 @@
+--Q) Difference between Dependency and Dependency management in maven ?
+For a small project, you can just have all your dependencies listed in 
+<dependencies> section. But, for a multi-module project, and projects that require 
+management of versions of dependencies, it is always better to manage the 
+dependencies using <dependencyManagement>. Whichever dependency you defined in 
+<dependencyManagement> and used in <dependencies>, it becomes a managed dependency.
+
+
+--Q)

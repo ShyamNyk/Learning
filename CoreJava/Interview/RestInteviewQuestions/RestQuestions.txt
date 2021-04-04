@@ -1,0 +1,59 @@
+https://www.guru99.com/rest-api-interview-question-answers.html
+
+1) What is the RESTful Web services ?
+RESTful Web Services are REST Architecture based Web Services. In REST Architecture, everything is a resource. RESTful Web Services provides communication between software applications running on different platforms and frameworks. We can consider web services as code on demand. A RESTful Web Service is a function or method which can be called by sending an HTTP request to a URL, and the service returns the result as the response.
+
+2)REST is an architectural approach, not a protocol. SOAP is a protocol
+
+----Safe method doesn't change anything internally. means in the server (resources)
+	Safe methods are methods that can be cached, prefetched without any repercussions to the resource.
+  	Idempotent method doesn't change anything externally (response)
+  	idempotent HTTP method is a HTTP method that can be called many times without different outcomes.
+  	
+HTTP Method	Idempotent	Safe
+OPTIONS	    yes			yes
+GET			yes			yes
+HEAD		yes			yes
+PUT			yes			no
+DELETE		yes			no
+POST		no			no
+PATCH		no			no
+
+ a = 4+0;  a++;
+ The first example is idempotent: no matter how many times we execute this statement, 
+ a will always be 4. The second example is not idempotent. Executing this 10 times will 
+ result in a different outcome as when running 5 times. 
+ Since both examples are changing the value of a, both are non-safe methods.
+ 
+ An idempotent HTTP method is a HTTP method that can be called many times without different outcomes
+ 
+ Q)When we use POST instead of Delete in our rest API then we are snatching power of Idempotency from clien
+ Delete is idempotent but POST is not 
+ 
+ Q)- 
+GET: Retrieves data from the server. Should have no other effect.
+PUT: Replaces target resource with the request payload. Can be used to update or create a new resources.
+PATCH: Similar to PUT, but used to update only certain fields within an existing resource.
+POST: Performs resource-specific processing on the payload. Can be used for different actions including creating a new resource, uploading a file or submitting a web form.
+DELETE: Removes data from the server.
+TRACE: Provides a way to test what server receives. It simply returns what was sent.
+OPTIONS: Allows a client to get information about the request methods supported by a service. The relevant response header is Allow with supported methods. Also used in CORS as preflight request to inform server about actual request method and ask about custom headers.
+HEAD: Returns only the response headers.
+CONNECT: Used by browser when it knows it talks to a proxy and the final URI begins with https://. The intent of CONNECT is to allow end-to-end encrypted TLS session, so the data is unreadable to a proxy.
+
+Q) PUT vs POST
+PUT method is idempotent whereas POST method is not idempotent.
+POST to create a resource , PUT to update the resource.
+
+Q) Advantage of Soap over Rest
+It gives more security,SOAP’s support for WS-Security can come in handy.
+Another advantage of SOAP is that it offers built-in retry logic to compensate for failed communications
+SOAP is highly extensible through other protocols and technologies
+ 
+Q)5. Contenttype vs accept headers 
+-- Accept Header tells the API that it is expecting the response in the specified media type e.g. application/json or application/xml.
+Accept: application/json
+--Content-Type tells the API ab
+
+Q) Difference between Jax RS and Jax WS
+ 

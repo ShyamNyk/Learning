@@ -1,0 +1,6 @@
+The TreeSet is much similar to the HashSet class.
+The major difference between both classes is used data structure between them
+The HashSet uses a Hashtable, and the TreeSet uses a self-balancing tree
+It uses a tree data structure to store and maintain the objects
+
+
