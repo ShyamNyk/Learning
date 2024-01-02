@@ -1,0 +1,67 @@
+There are different mocking frameworks: Mockito, Easy Mock, JMokcito
+Mockito is the most popular framework  
+  
+  Mockito
+  -----------------------------------
+- mockitojunitrunner is required to provide the mocks
+- One Junit class can have only one runner. In case you want to have multiple runner, use @Rule
+- @Rule runs before and after the test, you can use @Rule instead of using the runner
+ 
+    - stub(mock.someCode ().toReturn(somethingElse);
+    - given(mock.someCode ()).willReturn(somethingElse); (BDD style)
+    - when(mock.someCode ()).thenReturn(somethingElse); (traditional mockito style) 
+      doReturn(somethingElse).when(mock.someCode ())
+    - You can return multiple results using mockito
+      when(mocklist.size()).thenReturn(1).thenReturn(2).thenReturn(3);  
+      
+- Mock returns an default when the method is not stated (This is one of the advantages of mockito over easy mock)
+- Mockito does not allow the combination of a matcher and a hardcoded value
+- when a method does not return anything, we just check the side effects. usually verify method is called to check the side effects
+  then-should is the alterate to the verify method
+  
+- @Spy gets all the logic from the class where as @Mock does not , Spy is called partial mock
+  Avoid Spy in projects. If the applications are properly build, they will not have reasons to use Spy. 
+  Spy is more for the legacy systems where you don't have access to the code and really want to spy what is happening inside ?
+  mock = dummy object with no real logic
+  spy = real object with real logic that we can modify
+  
+  Power Mock
+  -----------------------------------
+  You can mock private,static,private methods. You can mock constructors also
+  You have to have a runner and have to initialize the classes having static methods
+  @RunWith(PowerMockRunner.class)
+  @PrepareForTest({ UtilityClass.class})    
+  
+  Argument matcher
+  ------------------------------------
+  - use any() for objects, for primitive values use anyDouble(),anyBoolean()...
+  - Mockito does not allow the combination of a matcher and a hardcoded value
+    In case you want to mix matcher with concrete value, use eq() - method (any(), eq(400.0))
+  - For nullable strings, use any()
+
+
+
+Writing a Good unit tests:
+---------------------------------------
+  - Readability
+    The Testclass method name should be meaningful and self descriptive. 
+    You can follow the following Naming convention : MethodName_Scenario_Result 
+  - Test should fail if there is a really problem in the logic. Test should not fail if there is something else changes. Example test should not fail for environment problems
+
+THE BENEFIT OF USING ASSERTTHAT OVER OTHER ASSERT METHODS
+-----------------------------------------------------------
+ https://reachmnadeem.wordpress.com/2019/03/17/the-benefit-of-using-assertthat-over-other-assert-methods/
+ - Readability: It is more human readable. Kind of a english sentence. The new syntax allows you to think in terms of subject, verb, object (asset that actual is expected) rather than (as in traditional assert statements) verb, object and subject (assert equals expected actual)
+ - Here is how, check of not equals in assertEquals (), not possible . if you have to use assertFalse
+ - Type Safety
+    assertEquals("abc", 123); //Compiles but fails
+    assertThat(123, equalTo("abc")); //Does not even compiles
+    
+DisplayNameGenerator
+----------------------------------------------------------
+
+  
+
+
+mockitojunitrunner vs spring junitrunner?
+-----------------------------------------

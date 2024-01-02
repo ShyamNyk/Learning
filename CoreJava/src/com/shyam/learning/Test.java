@@ -2,8 +2,9 @@ package com.shyam.learning;
 
 public class Test {
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws InterruptedException {
 		int num = 5;
+		Thread.sleep(120*1000);
 
 		if (checkIfPrime(num)) {
 			System.out.println(num + " Prime Number");

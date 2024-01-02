@@ -1,0 +1,35 @@
+1) What is the difference between Odata and Rest ?
+------------------------------------------------------
+The OData protocol is built on top of the AtomPub protocol. The AtomPub protocol is one of the best examples of REST API design. So, in a sense you are right - the OData is just another REST API and each OData implementation is a REST-ful web service.
+The difference is that OData is a specific protocol; REST is architecture style and design pattern.
+
+REST - is an architecture of how to send messages over HTTP.
+OData (Open Data Protocol) : it defines the best practice for building and consuming RESTful APIs.
+OData V4- It is a protocol. OData is a way to create RESTful web services thus an specific implementation of REST.
+          really defines the content of the messages in different formats (currently I think is AtomPub and JSON). 
+          ODataV4 follows rest principles.
+          The point of Odata is being able to query directly from the URL with out-of-the-box options.
+          $filter, $expand, $metadata
+OData helps you focus on your business logic while building RESTful APIs without having to worry about the 
+approaches to define request and response headers, status codes, HTTP methods, URL conventions, media types, 
+payload formats and query options etc. OData also guides you about tracking changes, defining functions/actions 
+for reusable procedures and sending asynchronous/batch requests etc.    
+
+2) Which is better, OData or REST?
+----------------------------------------
+The choice between OData and REST depends on your specific project requirements. 
+OData offers advanced query capabilities and standardized metadata, 
+making it suitable for scenarios that require extensive querying and discoverability. 
+REST provides simplicity, flexibility, wide adoption, and platform independence, 
+making it a popular choice for a broad range of applications. 
+Consider your project needs, complexity tolerance, interoperability requirements, 
+and available resources to determine which approach is best for you.
+
+3) Does using OData mean I have to use the Atom or JSON format?
+OData supports both the Atom And JSON formats for transferring data. While these formats are commonly used with OData, they are not mandatory. OData provides flexibility in choosing the data format that best suits your needs, allowing you to work with other formats if desired.
+
+4) Are there any limitations or drawbacks to using REST or OData?
+REST and OData have their strengths and considerations. REST’s simplicity may lack some of the advanced features provided by OData, while OData’s additional capabilities may introduce complexity. It’s important to evaluate your project requirements and consider factors such as querying needs, metadata support, interoperability, and development resources before choosing between REST and OData.
+
+5) Sample project for odata using Olingo      
+https://www.baeldung.com/olingo
